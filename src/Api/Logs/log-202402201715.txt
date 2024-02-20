@@ -1,0 +1,2 @@
+2024-02-20 17:15:44.635 -03:00 [INF] Request: POST /Project
+2024-02-20 17:15:44.721 -03:00 [ERR] Exception caught: Specified method is not supported.

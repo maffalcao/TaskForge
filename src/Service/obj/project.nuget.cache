@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "dgSpecHash": "DGiiW7sAA4NwNd/RsZRdUa0UakHPhALH8bIcsNSj9lXt5N19Mry8Rz0ZuI9q48rMgoad0nSkWUCPT90yRA/oiw==",
+  "success": false,
+  "projectFilePath": "C:\\Git\\TaskForge\\src\\Service\\Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\maffa\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\maffa\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\maffa\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\maffa\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\maffa\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\maffa\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.16\\microsoft.aspnetcore.app.ref.7.0.16.nupkg.sha512",
+    "C:\\Users\\maffa\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.16\\microsoft.netcore.app.ref.7.0.16.nupkg.sha512",
+    "C:\\Users\\maffa\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.16\\microsoft.windowsdesktop.app.ref.7.0.16.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1201",
+      "level": "Error",
+      "message": "Project Domain is not compatible with net7.0 (.NETCoreApp,Version=v7.0). Project Domain supports: net8.0 (.NETCoreApp,Version=v8.0)",
+      "libraryId": "Domain",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    }
+  ]
+}

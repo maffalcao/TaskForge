@@ -1,0 +1,9 @@
+2024-02-20 17:36:14.398 -03:00 [INF] Request: POST /Project
+2024-02-20 17:36:14.434 -03:00 [INF] Request Body: {
+  "name": "marco falcão"
+}
+2024-02-20 17:36:20.095 -03:00 [INF] Response: {"result":{},"isSuccess":true,"isFailure":false,"errorMessage":null}
+2024-02-20 17:36:59.144 -03:00 [INF] Request: POST /Project
+2024-02-20 17:36:59.191 -03:00 [INF] Request Body: {
+  "name": "marco falcão"
+}
