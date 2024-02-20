@@ -1,0 +1,16 @@
+C:\Git\TaskForge\src\Service\bin\Debug\net8.0\Service.deps.json
+C:\Git\TaskForge\src\Service\bin\Debug\net8.0\Service.dll
+C:\Git\TaskForge\src\Service\bin\Debug\net8.0\Service.pdb
+C:\Git\TaskForge\src\Service\obj\Debug\net8.0\Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Git\TaskForge\src\Service\obj\Debug\net8.0\Service.AssemblyInfoInputs.cache
+C:\Git\TaskForge\src\Service\obj\Debug\net8.0\Service.AssemblyInfo.cs
+C:\Git\TaskForge\src\Service\obj\Debug\net8.0\Service.csproj.CoreCompileInputs.cache
+C:\Git\TaskForge\src\Service\obj\Debug\net8.0\Service.sourcelink.json
+C:\Git\TaskForge\src\Service\obj\Debug\net8.0\Service.dll
+C:\Git\TaskForge\src\Service\obj\Debug\net8.0\refint\Service.dll
+C:\Git\TaskForge\src\Service\obj\Debug\net8.0\Service.pdb
+C:\Git\TaskForge\src\Service\obj\Debug\net8.0\ref\Service.dll
+C:\Git\TaskForge\src\Service\bin\Debug\net8.0\Domain.dll
+C:\Git\TaskForge\src\Service\bin\Debug\net8.0\Domain.pdb
+C:\Git\TaskForge\src\Service\obj\Debug\net8.0\Service.csproj.AssemblyReference.cache
+C:\Git\TaskForge\src\Service\obj\Debug\net8.0\Service.csproj.Up2Date
