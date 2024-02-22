@@ -1,7 +1,7 @@
 [
   {
     "ContainingType": "Api.Controllers.ProjectController",
-    "Method": "AddNewProject",
+    "Method": "AddProject",
     "RelativePath": "Project",
     "HttpMethod": "POST",
     "IsController": true,
@@ -45,6 +45,55 @@
   },
   {
     "ContainingType": "Api.Controllers.ProjectController",
+    "Method": "AddTask",
+    "RelativePath": "Project/{projectId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "projectId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "Domain.Dtos.AddTaskDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.ErrorHandling.OperationResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "Api.Controllers.ProjectController",
     "Method": "GetProjectsByUserId",
     "RelativePath": "Project/{userId}",
     "HttpMethod": "GET",
@@ -66,6 +115,15 @@
           "text/json"
         ],
         "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
       }
     ]
   }

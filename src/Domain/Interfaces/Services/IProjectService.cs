@@ -9,4 +9,6 @@ public interface IProjectService
     Task<IEnumerable<ProjectDto>> GetAllByUserIdAsync(int userId);
     Task<ProjectDto> GetByIdAsync(int id);
     Task<bool> DeleteAsync(int id);
+
+    Task<OperationResult> AddProjectTaskAsync(AddTaskDto addProjectTaskDto, int projectId, int userId);
 }

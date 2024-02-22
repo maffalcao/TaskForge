@@ -15,8 +15,10 @@ public static class ServiceCollectionExtensions
     public static void AddDomainServices(this IServiceCollection services)
     {
         services.AddScoped<IProjectService, ProjectService>();
+        services.AddScoped<ITaskService, TaskService>();
         services.AddScoped<IUserService, UserService>();
         services.AddTransient<IValidator<AddProjectDto>, AddProjectDtoValidator>();
+        services.AddTransient<IValidator<AddTaskDto>, AddTaskDtoValidator>();
     }
 
     public static void AddInfraestructureServices(this IServiceCollection services, IConfiguration configuration)

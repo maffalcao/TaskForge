@@ -16,7 +16,7 @@ public class TaskMapping : IEntityTypeConfiguration<ProjectTask>
         builder.HasKey(t => t.Id);
         builder.Property(t => t.Title).IsRequired();
         builder.Property(t => t.Description).IsRequired();
-        builder.Property(t => t.DueDate).IsRequired();
+        builder.Property(t => t.DueDate);
         builder.Property(t => t.Status).IsRequired();
         builder.Property(t => t.Priority).IsRequired();
         builder.Property(t => t.DeletedAt);

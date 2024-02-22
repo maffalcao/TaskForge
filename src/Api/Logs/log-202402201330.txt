@@ -1,5 +1,0 @@
-2024-02-20 13:30:07.116 -03:00 [INF] Request: GET /Project/1
-2024-02-20 13:30:18.736 -03:00 [ERR] Exception caught: Object reference not set to an instance of an object.
-2024-02-20 13:30:24.375 -03:00 [INF] Request: GET /Project/1
-2024-02-20 13:30:39.026 -03:00 [ERR] Exception caught: Object reference not set to an instance of an object.
-2024-02-20 13:30:57.269 -03:00 [INF] Request: GET /Project/1

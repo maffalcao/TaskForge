@@ -1,3 +1,0 @@
-2024-02-20 13:24:01.271 -03:00 [ERR] Exception caught: Specified method is not supported.
-2024-02-20 13:24:51.138 -03:00 [INF] Request: GET /Project/1
-2024-02-20 13:24:54.434 -03:00 [ERR] Exception caught: Specified method is not supported.

@@ -1,1 +1,0 @@
-2024-02-20 17:19:12.919 -03:00 [ERR] Exception caught: Specified method is not supported.

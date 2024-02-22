@@ -56,6 +56,10 @@
               "target": "Package",
               "version": "[11.9.0, )"
             },
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[11.3.0, )"
+            },
             "Mapster": {
               "target": "Package",
               "version": "[7.4.0, )"
@@ -180,6 +184,10 @@
             "Mapster": {
               "target": "Package",
               "version": "[7.4.0, )"
+            },
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             },
             "Microsoft.Extensions.Logging": {
               "target": "Package",

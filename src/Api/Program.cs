@@ -1,6 +1,5 @@
 using Api.Extensions;
-using Infrastructure.Context;
-using Microsoft.EntityFrameworkCore;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +18,9 @@ builder.Services.AddInfraestructureServices(builder.Configuration);
 builder.Services.ConfigureMiddlewares();
 
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Program>());
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
