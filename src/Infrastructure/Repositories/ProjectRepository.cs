@@ -12,12 +12,12 @@ public class ProjectRepository : BaseRepository<Project>, IProjectRepository
     }
 
     public async Task<Project> AddProjectAsync(Project project)
-    {        
+    {
         var addedProject = await AddAsync(project);
 
         var projects = await GetAsync(p => p.Id == addedProject.Id, includeString: "CreatedByUser");
         return projects.FirstOrDefault();
-                
+
     }
 
     public async Task<IEnumerable<Project>> GetAllByUserId(int userId)

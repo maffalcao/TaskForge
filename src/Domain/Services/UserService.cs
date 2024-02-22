@@ -12,7 +12,7 @@ public class UserService(IRepository<User> repository) : IUserService
     public async Task<UserDto> AddAsync(CreateUserDto userDto)
     {
         var user = new User(userDto.Name, userDto.ProfileName);
-        
+
         user = await repository.AddAsync(user);
 
         return user.Adapt<UserDto>();

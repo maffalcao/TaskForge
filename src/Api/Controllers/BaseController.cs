@@ -22,7 +22,7 @@ public class BaseController : ControllerBase
     protected ActionResult<OperationResult> HandleResult<T>(OperationResult result) where T : class
     {
         if (result.IsSuccess)
-        {        
+        {
             return Ok(result.Result as T);
         }
 

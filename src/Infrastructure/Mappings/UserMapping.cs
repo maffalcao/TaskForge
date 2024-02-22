@@ -9,10 +9,15 @@ public class UserMapping : IEntityTypeConfiguration<User>
     public void Configure(EntityTypeBuilder<User> builder)
     {
         builder.ToTable("Users");
-        
+
         builder.HasMany(u => u.Projects)
             .WithOne(p => p.CreatedByUser)
-            .HasForeignKey(p => p.CreatedByUserId)            
-            .OnDelete(DeleteBehavior.Cascade);        
+            .HasForeignKey(p => p.CreatedByUserId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasMany(u => u.AssignedTasks)
+            .WithOne(t => t.AssignedUser)
+            .HasForeignKey(t => t.AssignedUserId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

@@ -1,0 +1,4 @@
+2024-02-22 11:22:17.556 -03:00 [INF] Request: POST /project
+2024-02-22 11:22:17.589 -03:00 [INF] Request Body: {"Name":"Test Project"}
+2024-02-22 11:22:17.949 -03:00 [ERR] User not found
+2024-02-22 11:22:17.958 -03:00 [INF] Response: {"result":null,"isSuccess":false,"isFailure":true,"errorMessage":"User not found"}

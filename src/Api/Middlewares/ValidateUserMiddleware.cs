@@ -1,13 +1,12 @@
 ﻿using Api.Middlewares;
-using Domain.Interfaces.Services;
 
 public class ValidateUserMiddleware : IMiddleware
-{    
-    ILogger<ValidateUserMiddleware> _logger;    
+{
+    ILogger<ValidateUserMiddleware> _logger;
 
     public ValidateUserMiddleware(ILogger<ValidateUserMiddleware> logger)
-    {     
-        _logger = logger;        
+    {
+        _logger = logger;
     }
 
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)
@@ -21,7 +20,7 @@ public class ValidateUserMiddleware : IMiddleware
         var userIdHeader = context.Request.Headers["userId"].ToString();
 
         if (int.TryParse(userIdHeader, out int userId))
-        {            
+        {
             context.Items["userId"] = userId;
         }
         else
@@ -31,5 +30,5 @@ public class ValidateUserMiddleware : IMiddleware
         }
 
         await next(context);
-    }    
+    }
 }

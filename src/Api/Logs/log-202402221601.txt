@@ -1,0 +1,15 @@
+2024-02-22 16:01:01.650 -03:00 [ERR] Failed executing DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Task] (
+    [Id] int NOT NULL IDENTITY,
+    [Title] nvarchar(max) NOT NULL,
+    [Description] nvarchar(max) NOT NULL,
+    [DueDate] datetime2 NOT NULL,
+    [Status] int NOT NULL,
+    [Priority] int NOT NULL,
+    [DeletedAt] datetime2 NULL,
+    [AssignedUserId] int NULL,
+    [ProjectId] int NOT NULL,
+    CONSTRAINT [PK_Task] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_Task_Projects_ProjectId] FOREIGN KEY ([ProjectId]) REFERENCES [Projects] ([Id]) ON DELETE CASCADE,
+    CONSTRAINT [FK_Task_Users_AssignedUserId] FOREIGN KEY ([AssignedUserId]) REFERENCES [Users] ([Id]) ON DELETE CASCADE
+);

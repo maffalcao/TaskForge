@@ -1,10 +1,9 @@
 ﻿using Domain.Dtos;
 using Domain.Entities;
+using Domain.ErrorHandling;
 using Domain.Interfaces.Persistence;
 using Domain.Interfaces.Services;
-using Microsoft.Extensions.Logging;
 using Mapster;
-using Domain.ErrorHandling;
 
 namespace Domain.Services;
 
@@ -12,16 +11,16 @@ public class ProjectService(IProjectRepository projectRepository, IRepository<Us
 {
     public async Task<OperationResult> AddAsync(AddProjectDto projectDto, int userId)
     {
-        if(await userRepository.Exist(userId))
+        if (await userRepository.Exist(userId))
         {
             var project = new Project(projectDto.Name, userId);
             project = await projectRepository.AddProjectAsync(project);
 
             return OperationResult.Success(project.Adapt<ProjectDto>());
         }
-          
 
-        return OperationResult.Failure(Errors.UserNotFoundException.Description);     
+
+        return OperationResult.Failure(Errors.UserNotFoundException.Description);
 
     }
 
