@@ -1,1 +1,0 @@
-2024-02-20 17:37:00.879 -03:00 [INF] Response: {"result":{},"isSuccess":true,"isFailure":false,"errorMessage":null}

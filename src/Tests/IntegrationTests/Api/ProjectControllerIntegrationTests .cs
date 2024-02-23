@@ -1,19 +1,17 @@
-﻿using System.Net;
-using System.Text;
-using Domain.Dtos;
+﻿using Domain.Dtos;
 using Domain.Entities;
-using Domain.ErrorHandling;
 using Infrastructure.Context;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
+using System.Net;
+using System.Text;
 using Tests.IntegrationTests;
-using static System.Net.Mime.MediaTypeNames;
 
 
-public class ProjectControllerIntegrationTests : IClassFixture<WebApplicationFactory<Program>> 
-{     
+public class ProjectControllerIntegrationTests : IClassFixture<WebApplicationFactory<Program>>
+{
 
     [Fact]
     public async Task AddNewProject_ValidProject_ReturnsSuccess()
@@ -36,8 +34,8 @@ public class ProjectControllerIntegrationTests : IClassFixture<WebApplicationFac
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
         var responseContent = await response.Content.ReadAsStringAsync();
-        var projectDtoCreated = JsonConvert.DeserializeObject<ProjectDto>(responseContent);      
-        
+        var projectDtoCreated = JsonConvert.DeserializeObject<ProjectDto>(responseContent);
+
         Assert.NotNull(projectDtoCreated);
         Assert.Equal(newProject.Name, projectDtoCreated.Name);
         Assert.Equal(requestUserId, projectDtoCreated.CreatedByUserId);
@@ -47,7 +45,7 @@ public class ProjectControllerIntegrationTests : IClassFixture<WebApplicationFac
     public async Task AddNewProject_InvalidUserId_ReturnsBadRequest()
     {
         // Arrange
-        const int nonExistentUserId = 999; 
+        const int nonExistentUserId = 999;
         var application = new WebApplicationFactory();
         var client = application.CreateClient();
 
@@ -65,10 +63,10 @@ public class ProjectControllerIntegrationTests : IClassFixture<WebApplicationFac
 
     [Fact]
     public async Task GetProjectsByUserId_ValidUserId_ReturnsItsProjects()
-    {        
+    {
         var application = new WebApplicationFactory();
         var client = application.CreateClient();
-       
+
 
         var userId1 = 1;
         var userId2 = 2;
@@ -78,7 +76,7 @@ public class ProjectControllerIntegrationTests : IClassFixture<WebApplicationFac
         await InsertProject("projeto3", userId1, application);
         await InsertProject("projeto4", userId2, application);
         await InsertProject("projeto4", userId2, application);
-        
+
 
         client.DefaultRequestHeaders.Add("userId", userId1.ToString());
 
@@ -104,13 +102,13 @@ public class ProjectControllerIntegrationTests : IClassFixture<WebApplicationFac
         using var scope = webApplicationFactory.Services.CreateScope();
         var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationContext>();
 
-        if(emptyTableBefore)
+        if (emptyTableBefore)
         {
             await EmptyTableAsync<Project>(dbContext.Projects, dbContext);
         }
 
         var project = new Project(name, userId);
-        
+
         dbContext.Projects.Add(project);
         await dbContext.SaveChangesAsync();
 

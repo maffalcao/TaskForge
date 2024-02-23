@@ -8,6 +8,6 @@ public class AddProjectDtoValidator : AbstractValidator<AddProjectDto>
 {
     public AddProjectDtoValidator()
     {
-        RuleFor(x => x.Name).NotEmpty().WithMessage("Name of project can't be empty");        
+        RuleFor(x => x.Name).NotEmpty();
     }
 }

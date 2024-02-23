@@ -1,58 +1,31 @@
-using Api.Middlewares;
-using Api.Validators;
-using Domain.Dtos;
-using Domain.Interfaces.Persistence;
-using Domain.Interfaces.Services;
-using Domain.Services;
-using FluentValidation;
-using Infrastructure.Context;
-using Infrastructure.Repositories;
-using Microsoft.EntityFrameworkCore;
-using Serilog;
-using Serilog.Events;
-
+using Api.Extensions;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// log configuration
-builder.Host.UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration
-    .MinimumLevel.Information()
-    .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
-    .Enrich.FromLogContext()
-    .WriteTo.Console()
-    .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Minute)
-);
+builder.Services.AddSingleton<Program>();
 
-// api registration
-builder.Services.AddTransient<IValidator<AddProjectDto>, AddProjectDtoValidator>();
+// configure logging
+builder.ConfigureLogging();
+
+// configure domain injections
+builder.Services.AddDomainServices();
+
+// configure infraestructure injections
+builder.Services.AddInfraestructureServices(builder.Configuration);
+
+// configure middlewares
+builder.Services.ConfigureMiddlewares();
 
 
-// infraestructure registrations
+builder.Services.AddControllers()
+    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Program>());
 
-builder.Services.AddDbContext<ApplicationContext>(
-    options => options.UseSqlServer(builder.Configuration.GetConnectionString("TaskForgeDbConnectionString"))
-);
-builder.Services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
-builder.Services.AddScoped<IProjectRepository, ProjectRepository>();
-
-// application registrations
-builder.Services.AddScoped<IProjectService, ProjectService>();
-builder.Services.AddScoped<IUserService, UserService>();
-
-builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<ValidateUserMiddleware>();
-builder.Services.AddScoped<ErrorHandlingMiddleware>();
-builder.Services.AddScoped<RequestResponseLoggingMiddleware>();
-
-builder.Services.AddSingleton<Program>();
-
-
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -63,9 +36,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-// middlewares
-app.UseMiddleware<ValidateUserMiddleware>();
-app.UseMiddleware<ErrorHandlingMiddleware>();
-app.UseMiddleware<RequestResponseLoggingMiddleware>();
+// use middlewares
+app.UseMiddlewares();
 
 app.Run();

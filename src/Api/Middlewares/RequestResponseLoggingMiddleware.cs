@@ -1,11 +1,11 @@
 ﻿using System.Text;
 
-public class RequestResponseLoggingMiddleware: IMiddleware
-{    
+public class RequestResponseLoggingMiddleware : IMiddleware
+{
     private readonly ILogger _logger;
 
     public RequestResponseLoggingMiddleware(ILogger<RequestResponseLoggingMiddleware> logger)
-    {        
+    {
         _logger = logger;
     }
 

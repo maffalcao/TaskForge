@@ -37,16 +37,54 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CreatedByUserId");
 
-                    b.HasIndex("UserId");
+                    b.ToTable("Projects", (string)null);
+                });
 
-                    b.ToTable("Projects");
+            modelBuilder.Entity("Domain.Entities.ProjectTask", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("AssignedUserId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DueDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Priority")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AssignedUserId");
+
+                    b.HasIndex("ProjectId");
+
+                    b.ToTable("Tasks", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.User", b =>
@@ -67,26 +105,47 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Project", b =>
                 {
                     b.HasOne("Domain.Entities.User", "CreatedByUser")
-                        .WithMany()
+                        .WithMany("Projects")
                         .HasForeignKey("CreatedByUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Entities.User", null)
-                        .WithMany("Projects")
-                        .HasForeignKey("UserId");
-
                     b.Navigation("CreatedByUser");
+                });
+
+            modelBuilder.Entity("Domain.Entities.ProjectTask", b =>
+                {
+                    b.HasOne("Domain.Entities.User", "AssignedUser")
+                        .WithMany("AssignedTasks")
+                        .HasForeignKey("AssignedUserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Domain.Entities.Project", "Project")
+                        .WithMany("Tasks")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AssignedUser");
+
+                    b.Navigation("Project");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Project", b =>
+                {
+                    b.Navigation("Tasks");
                 });
 
             modelBuilder.Entity("Domain.Entities.User", b =>
                 {
+                    b.Navigation("AssignedTasks");
+
                     b.Navigation("Projects");
                 });
 #pragma warning restore 612, 618

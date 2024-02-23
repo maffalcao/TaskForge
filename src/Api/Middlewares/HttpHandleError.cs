@@ -1,6 +1,6 @@
 ﻿namespace Api.Middlewares;
 
-public static class HttpHandleError 
+public static class HttpHandleError
 {
     public static void HandleError(HttpContext context, int statusCode, string message)
     {

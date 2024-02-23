@@ -1,0 +1,18 @@
+2024-02-22 18:44:09.682 -03:00 [INF] Request: POST /project/1
+2024-02-22 18:44:09.698 -03:00 [INF] Request Body: {
+  "title": "primeira task",
+  "description": "segunda task",
+  "status": 1,
+  "priority": 3,
+  "assignedUserId": 100
+
+}
+2024-02-22 18:44:54.215 -03:00 [INF] Request: POST /project/1
+2024-02-22 18:44:54.250 -03:00 [INF] Request Body: {
+  "title": "primeira task",
+  "description": "segunda task",
+  "status": 1,
+  "priority": 3,
+  "assignedUserId": 100
+
+}

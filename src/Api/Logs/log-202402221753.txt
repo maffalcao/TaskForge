@@ -1,0 +1,31 @@
+2024-02-22 17:53:08.077 -03:00 [INF] Request: POST /project
+2024-02-22 17:53:08.111 -03:00 [INF] Request Body: {
+  "name": "marco falcão"
+}
+2024-02-22 17:53:12.842 -03:00 [ERR] User 10000 not found
+2024-02-22 17:53:12.849 -03:00 [INF] Response: {"result":null,"isSuccess":false,"isFailure":true,"error":{"type":"Project.AddNewProject","description":"User 10000 not found","statusCode":404}}
+2024-02-22 17:53:29.096 -03:00 [INF] Request: POST /project
+2024-02-22 17:53:29.097 -03:00 [INF] Request Body: {
+  "name": "marco falcão"
+}
+2024-02-22 17:53:29.555 -03:00 [INF] Response: {"id":2,"name":"marco falcão","createdByUserId":1,"createdByUser":{"id":1,"name":"Marco","profileName":"manager"}}
+2024-02-22 17:53:33.534 -03:00 [INF] Request: POST /project
+2024-02-22 17:53:33.534 -03:00 [INF] Request Body: {
+  "name": "marco falcão"
+}
+2024-02-22 17:53:33.570 -03:00 [INF] Response: {"id":3,"name":"marco falcão","createdByUserId":1,"createdByUser":{"id":1,"name":"Marco","profileName":"manager"}}
+2024-02-22 17:53:34.392 -03:00 [INF] Request: POST /project
+2024-02-22 17:53:34.392 -03:00 [INF] Request Body: {
+  "name": "marco falcão"
+}
+2024-02-22 17:53:34.414 -03:00 [INF] Response: {"id":4,"name":"marco falcão","createdByUserId":1,"createdByUser":{"id":1,"name":"Marco","profileName":"manager"}}
+2024-02-22 17:53:34.867 -03:00 [INF] Request: POST /project
+2024-02-22 17:53:34.867 -03:00 [INF] Request Body: {
+  "name": "marco falcão"
+}
+2024-02-22 17:53:34.888 -03:00 [INF] Response: {"id":5,"name":"marco falcão","createdByUserId":1,"createdByUser":{"id":1,"name":"Marco","profileName":"manager"}}
+2024-02-22 17:53:35.250 -03:00 [INF] Request: POST /project
+2024-02-22 17:53:35.250 -03:00 [INF] Request Body: {
+  "name": "marco falcão"
+}
+2024-02-22 17:53:35.270 -03:00 [INF] Response: {"id":6,"name":"marco falcão","createdByUserId":1,"createdByUser":{"id":1,"name":"Marco","profileName":"manager"}}

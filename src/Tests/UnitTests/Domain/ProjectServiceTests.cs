@@ -5,7 +5,6 @@ using Domain.Interfaces.Persistence;
 using Domain.Services;
 using FluentAssertions;
 using Moq;
-using Xunit;
 
 public class ProjectServiceTests
 {

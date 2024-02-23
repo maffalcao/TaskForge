@@ -6,15 +6,12 @@ namespace Api.Controllers;
 
 public class BaseController : ControllerBase
 {
-
+        
     public readonly ILogger<ProjectController> _logger;
-    public readonly IProjectService _projectService;
 
-
-    public BaseController(ILogger<ProjectController> logger, IProjectService projectService)
+    public BaseController(ILogger<ProjectController> logger)
     {
-        _logger = logger;
-        _projectService = projectService;
+        _logger = logger;        
     }
 
     protected int GetAuthenticatedUserId() => int.Parse(HttpContext.Items["userId"].ToString());
@@ -22,12 +19,14 @@ public class BaseController : ControllerBase
     protected ActionResult<OperationResult> HandleResult<T>(OperationResult result) where T : class
     {
         if (result.IsSuccess)
-        {        
+        {
             return Ok(result.Result as T);
         }
 
-        _logger.LogError(result.ErrorMessage);
-        return BadRequest(result);
+        _logger.LogError(result.Error.Description);
+
+        return StatusCode(result.Error.StatusCode, result);
+        
     }
 
 

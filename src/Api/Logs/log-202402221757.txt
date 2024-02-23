@@ -1,0 +1,7 @@
+2024-02-22 17:57:03.962 -03:00 [INF] Request: POST /project/2
+2024-02-22 17:57:03.981 -03:00 [INF] Request Body: {
+  "title": "primeira task",
+  "description": "segunda task",
+  "status": 1,
+  "priority": 1
+}
