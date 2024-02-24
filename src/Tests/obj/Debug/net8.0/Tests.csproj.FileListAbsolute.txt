@@ -497,3 +497,5 @@ C:\Git\TaskForge\src\Tests\obj\Debug\net8.0\refint\Tests.dll
 C:\Git\TaskForge\src\Tests\obj\Debug\net8.0\Tests.pdb
 C:\Git\TaskForge\src\Tests\obj\Debug\net8.0\Tests.genruntimeconfig.cache
 C:\Git\TaskForge\src\Tests\obj\Debug\net8.0\ref\Tests.dll
+C:\Git\TaskForge\src\Tests\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
+C:\Git\TaskForge\src\Tests\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll

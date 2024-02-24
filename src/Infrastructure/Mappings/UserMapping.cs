@@ -19,5 +19,10 @@ public class UserMapping : IEntityTypeConfiguration<User>
             .WithOne(t => t.AssignedUser)
             .HasForeignKey(t => t.AssignedUserId)
             .OnDelete(DeleteBehavior.Cascade);
+
+        builder.HasMany(u => u.TaskAuditTrails)
+            .WithOne(t => t.ModifiedByUser)
+            .HasForeignKey(t => t.ModifiedByUserId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }

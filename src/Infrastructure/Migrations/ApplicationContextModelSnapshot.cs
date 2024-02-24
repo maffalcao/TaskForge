@@ -55,6 +55,10 @@ namespace Infrastructure.Migrations
                     b.Property<int?>("AssignedUserId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
 
@@ -64,6 +68,9 @@ namespace Infrastructure.Migrations
 
                     b.Property<DateTime?>("DueDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("ModifiedByUserId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Priority")
                         .HasColumnType("int");
@@ -85,6 +92,42 @@ namespace Infrastructure.Migrations
                     b.HasIndex("ProjectId");
 
                     b.ToTable("Tasks", (string)null);
+                });
+
+            modelBuilder.Entity("Domain.Entities.ProjectTaskAuditTrail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ChangedField")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ModifiedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("NewValue")                        
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PreviousValue")                        
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TaskId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ModifiedByUserId");
+
+                    b.HasIndex("TaskId");
+
+                    b.ToTable("TaskAuditTrails", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.User", b =>
@@ -137,9 +180,33 @@ namespace Infrastructure.Migrations
                     b.Navigation("Project");
                 });
 
+            modelBuilder.Entity("Domain.Entities.ProjectTaskAuditTrail", b =>
+                {
+                    b.HasOne("Domain.Entities.User", "ModifiedByUser")
+                        .WithMany("TaskAuditTrails")
+                        .HasForeignKey("ModifiedByUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.ProjectTask", "Task")
+                        .WithMany("AuditTrails")
+                        .HasForeignKey("TaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ModifiedByUser");
+
+                    b.Navigation("Task");
+                });
+
             modelBuilder.Entity("Domain.Entities.Project", b =>
                 {
                     b.Navigation("Tasks");
+                });
+
+            modelBuilder.Entity("Domain.Entities.ProjectTask", b =>
+                {
+                    b.Navigation("AuditTrails");
                 });
 
             modelBuilder.Entity("Domain.Entities.User", b =>
@@ -147,6 +214,8 @@ namespace Infrastructure.Migrations
                     b.Navigation("AssignedTasks");
 
                     b.Navigation("Projects");
+
+                    b.Navigation("TaskAuditTrails");
                 });
 #pragma warning restore 612, 618
         }

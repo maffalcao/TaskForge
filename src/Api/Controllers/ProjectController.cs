@@ -7,8 +7,9 @@ using System.Net;
 
 namespace Api.Controllers
 {
+
     [ApiController]
-    [Route("[controller]")]
+    [Route("[controller]")]    
     public class ProjectController : BaseController
     {
         public readonly IProjectService _projectService;
@@ -22,21 +23,16 @@ namespace Api.Controllers
             _taskService = taskService;
         }
 
-        [HttpPost(Name = "AddProject")]
-        [ProducesResponseType((int)HttpStatusCode.OK)]
-        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [HttpPost(Name = "AddProject")]       
         public async Task<ActionResult<OperationResult>> AddProject([FromBody] AddProjectDto projectDto,
             [FromServices] IValidator<AddProjectDto> validator)
         {            
             var result = await _projectService.AddAsync(projectDto, GetAuthenticatedUserId());
 
-            return HandleResult<ProjectDto>(result);
+            return HandleResult(result);
         }
 
-        [HttpGet("{userId:int}", Name = "GetProjectsByUserId")]
-        [ProducesResponseType((int)HttpStatusCode.OK)]
-        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [HttpGet("{userId:int}", Name = "GetProjectsByUserId")]       
         public async Task<ActionResult<ProjectDto>> GetProjectsByUserId(int userId)
         {
             var result = await _projectService.GetAllByUserIdAsync(userId);
@@ -45,16 +41,38 @@ namespace Api.Controllers
 
         }
 
-        [HttpPost("{projectId:int}", Name = "AddTask")]
-        [ProducesResponseType((int)HttpStatusCode.OK)]
-        [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
 
+        [HttpPost("{projectId:int}/task", Name = "AddTask")]        
         public async Task<ActionResult<OperationResult>> AddTask(int projectId, [FromBody] AddTaskDto dto)
         {
             var result = await _taskService.AddAsync(dto, projectId, GetAuthenticatedUserId());
 
-            return HandleResult<TaskDto>(result);
+            return HandleResult(result);
+
+        }
+
+        [HttpPut("{projectId:int}/task/{taskId:int}", Name = "UpdateTask")]        
+        public async Task<ActionResult<OperationResult>> UpdateTask(int projectId, int taskId, [FromBody] UpdateTaskDto dto)
+        {
+            var result = await _taskService.UpdateAsync(dto, taskId, GetAuthenticatedUserId());
+
+            return HandleResult(result);            
+        }
+
+        [HttpDelete("{projectId:int}/task/{taskId:int}", Name = "DeleteTask")]        
+        public async Task<ActionResult<OperationResult>> DeleteTask(int taskId)
+        {
+            var result = await _taskService.DeleteAsync(taskId, GetAuthenticatedUserId());
+
+            return HandleResult(result);
+        }
+
+        [HttpGet("{projectId:int}/task", Name = "GetProjectTasks")]
+        public async Task<ActionResult<OperationResult>> GetProjectTasks(int projectId)
+        {
+            var result = await _taskService.GetByProjectAsync(projectId, GetAuthenticatedUserId());
+
+            return HandleResult(result);
 
         }
     }

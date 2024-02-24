@@ -36,7 +36,7 @@ public class ProjectServiceTests
     public async Task AddAsync_WhenUserDoesNotExist_ShouldReturnFailure()
     {
         // Arrange
-        var userId = 1;
+        var userId = 500;
         var projectDto = new AddProjectDto { Name = "Test Project" };
 
         var userRepositoryMock = new Mock<IRepository<User>>();
@@ -49,6 +49,6 @@ public class ProjectServiceTests
 
         // Assert
         result.IsSuccess.Should().BeFalse();
-        result.ErrorMessage.Should().Be(Errors.UserNotFoundException.Description);
+        result.Errors.First().Description.Should().Be(OperationErrors.UserNotFound(userId).Description);
     }
 }

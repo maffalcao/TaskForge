@@ -1,4 +1,8 @@
-﻿namespace Api.Middlewares;
+﻿using Api.Utils;
+using Domain.ErrorHandling;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace Api.Middlewares;
 
 public class ErrorHandlingMiddleware : IMiddleware
 {
@@ -17,11 +21,13 @@ public class ErrorHandlingMiddleware : IMiddleware
         }
         catch (Exception ex)
         {
-            var error = $"Exception caught: {ex.Message}";
-            _logger.LogError(error, ex);
+            var errorMessage = $"Exception caught: {ex.Message}";
 
-            HttpHandleError.HandleError(context, StatusCodes.Status500InternalServerError, "An unexpected error occurred.");
+            _logger.LogError(errorMessage, ex);
 
+            HttpResponseHandler.HandleError(context, StatusCodes.Status500InternalServerError, errorMessage);
+            return;
+                        
         }
     }
 }

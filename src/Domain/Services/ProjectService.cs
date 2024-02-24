@@ -13,7 +13,7 @@ public class ProjectService(IProjectRepository projectRepository, IRepository<Us
     {
         if ((await UserExist(userId)) is false)
         {
-            return OperationResult.Failure(Errors.UserNotFound(userId));            
+            return OperationResult.Failure(OperationErrors.UserNotFound(userId));            
         }
 
         var project = new Project(projectDto.Name, userId);
@@ -27,11 +27,11 @@ public class ProjectService(IProjectRepository projectRepository, IRepository<Us
         return await projectRepository.DeleteAsync(id);
     }
 
-    public async Task<IEnumerable<ProjectDto>> GetAllByUserIdAsync(int userId)
+    public async Task<OperationResult> GetAllByUserIdAsync(int userId)
     {
         var projects = await projectRepository.GetAllByUserId(userId);
 
-        return projects.Adapt<IEnumerable<ProjectDto>>();
+        return OperationResult.Success(projects.Adapt<IEnumerable<ProjectDto>>());
     }
 
     public async Task<ProjectDto> GetByIdAsync(int id)
@@ -46,7 +46,7 @@ public class ProjectService(IProjectRepository projectRepository, IRepository<Us
         var user  = await userRepository.GetByIdAsync(projectId);
         if (user is null)
         {
-            return OperationResult.Failure(Errors.UserNotFound(userId));
+            return OperationResult.Failure(OperationErrors.UserNotFound(userId));
         }
 
         if(addProjectTaskDto.AssignedUserId is not null)
@@ -54,7 +54,7 @@ public class ProjectService(IProjectRepository projectRepository, IRepository<Us
             var assignUserId = (int)addProjectTaskDto.AssignedUserId;
             if ((await UserExist(assignUserId) is false))
             {
-                return OperationResult.Failure(Errors.UserNotFound(assignUserId));
+                return OperationResult.Failure(OperationErrors.UserNotFound(assignUserId));
             }
         }
 
@@ -62,7 +62,7 @@ public class ProjectService(IProjectRepository projectRepository, IRepository<Us
 
         if (project is null)
         {
-            return OperationResult.Failure(Errors.ProjectNotFound(projectId));
+            return OperationResult.Failure(OperationErrors.ProjectNotFound(projectId));
         }
 
         var task = addProjectTaskDto.Adapt<ProjectTask>();
@@ -70,7 +70,7 @@ public class ProjectService(IProjectRepository projectRepository, IRepository<Us
 
         if(project.AddTask(task) is false)
         {
-            return OperationResult.Failure(Errors.ProjectMaxNumberOfTasksAchieved(projectId));
+            return OperationResult.Failure(OperationErrors.ProjectMaxNumberOfTasksAchieved(projectId));
         }
 
         await projectRepository.UpdateAsync(project);

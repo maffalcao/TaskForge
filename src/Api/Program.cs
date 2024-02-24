@@ -1,5 +1,7 @@
 using Api.Extensions;
+using FluentValidation;
 using FluentValidation.AspNetCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,15 +16,20 @@ builder.Services.AddDomainServices();
 // configure infraestructure injections
 builder.Services.AddInfraestructureServices(builder.Configuration);
 
+builder.Services.AddValidatorsFromAssemblyContaining<Program>();
+
+builder.Services.AddControllers()
+    .AddFluentValidation(
+        fv => fv.RegisterValidatorsFromAssemblyContaining<Program>());    
+
+builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddSwaggerGen();
+
 // configure middlewares
 builder.Services.ConfigureMiddlewares();
 
 
-builder.Services.AddControllers()
-    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Program>());
-
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -34,9 +41,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthorization();
 
-app.MapControllers();
-
 // use middlewares
 app.UseMiddlewares();
+
+app.MapControllers();
+
+
+
 
 app.Run();

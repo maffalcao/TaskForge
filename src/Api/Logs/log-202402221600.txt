@@ -1,2 +1,0 @@
-2024-02-22 16:00:06.425 -03:00 [ERR] Failed executing DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-DROP INDEX [IX_Projects_UserId] ON [Projects];

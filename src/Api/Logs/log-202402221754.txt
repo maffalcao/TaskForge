@@ -1,5 +1,0 @@
-2024-02-22 17:54:44.047 -03:00 [INF] Request: POST /project/2
-2024-02-22 17:54:44.061 -03:00 [INF] Request Body: {
-  "name": "marco falcão"
-}
-2024-02-22 17:54:44.118 -03:00 [INF] Response: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.1","title":"One or more validation errors occurred.","status":400,"errors":{"Title":["The Title field is required."],"Description":["The Description field is required."]},"traceId":"00-3486ca753364e8b67c361bb6335b057c-046d875bf001c3ed-00"}

@@ -1,2 +1,0 @@
-2024-02-20 17:30:48.881 -03:00 [INF] Request: POST /project
-2024-02-20 17:30:48.913 -03:00 [INF] Request Body: {"Name":"Test Project"}

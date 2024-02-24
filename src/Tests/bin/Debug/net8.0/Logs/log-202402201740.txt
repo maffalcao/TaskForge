@@ -1,3 +1,0 @@
-2024-02-20 17:40:19.604 -03:00 [INF] Request: POST /project
-2024-02-20 17:40:19.632 -03:00 [INF] Request Body: {"Name":"Test Project"}
-2024-02-20 17:40:20.088 -03:00 [INF] Response: {"id":7,"name":"Test Project","createdByUserId":1,"createdByUser":{"id":1,"name":"Marco","profileName":"manager"}}

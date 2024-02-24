@@ -1,6 +1,0 @@
-2024-02-20 17:24:10.583 -03:00 [INF] Request: POST /project/AddNewProject
-2024-02-20 17:24:10.612 -03:00 [INF] Request Body: {"Name":"Test Project"}
-2024-02-20 17:24:10.612 -03:00 [INF] Response: 
-2024-02-20 17:24:47.710 -03:00 [INF] Request: POST /project
-2024-02-20 17:24:47.739 -03:00 [INF] Request Body: {"Name":"Test Project"}
-2024-02-20 17:24:52.041 -03:00 [INF] Response: {"id":1,"name":"Test Project","createdByUserId":1,"createdByUser":{"id":1,"name":"Marco","profileName":"manager"}}

@@ -1,4 +1,0 @@
-2024-02-20 17:31:02.654 -03:00 [INF] Response: {"result":{},"isSuccess":true,"isFailure":false,"errorMessage":null}
-2024-02-20 17:31:43.771 -03:00 [INF] Request: POST /project
-2024-02-20 17:31:43.798 -03:00 [INF] Request Body: {"Name":"Test Project"}
-2024-02-20 17:31:47.743 -03:00 [INF] Response: {"result":{},"isSuccess":true,"isFailure":false,"errorMessage":null}
