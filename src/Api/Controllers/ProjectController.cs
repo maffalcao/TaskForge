@@ -7,8 +7,9 @@ using System.Net;
 
 namespace Api.Controllers
 {
+
     [ApiController]
-    [Route("[controller]")]
+    [Route("[controller]")]    
     public class ProjectController : BaseController
     {
         public readonly IProjectService _projectService;
@@ -31,7 +32,7 @@ namespace Api.Controllers
         {            
             var result = await _projectService.AddAsync(projectDto, GetAuthenticatedUserId());
 
-            return HandleResult<ProjectDto>(result);
+            return HandleResult(result);
         }
 
         [HttpGet("{userId:int}", Name = "GetProjectsByUserId")]
@@ -48,13 +49,12 @@ namespace Api.Controllers
         [HttpPost("{projectId:int}", Name = "AddTask")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]        
         public async Task<ActionResult<OperationResult>> AddTask(int projectId, [FromBody] AddTaskDto dto)
         {
             var result = await _taskService.AddAsync(dto, projectId, GetAuthenticatedUserId());
 
-            return HandleResult<TaskDto>(result);
+            return HandleResult(result);
 
         }
     }

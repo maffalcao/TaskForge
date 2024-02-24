@@ -44,6 +44,28 @@
     ]
   },
   {
+    "ContainingType": "Api.Controllers.BaseController",
+    "Method": "OnActionExecuting",
+    "RelativePath": "Project",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "context",
+        "Type": "Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "Api.Controllers.ProjectController",
     "Method": "AddTask",
     "RelativePath": "Project/{projectId}",

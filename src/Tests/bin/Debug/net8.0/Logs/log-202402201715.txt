@@ -1,1 +1,0 @@
-2024-02-20 17:15:00.166 -03:00 [ERR] Exception caught: The stream is not seekable.

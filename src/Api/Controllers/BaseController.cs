@@ -1,6 +1,8 @@
-﻿using Domain.ErrorHandling;
-using Domain.Interfaces.Services;
+﻿using Api.Utils;
+using Domain.ErrorHandling;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
+using Newtonsoft.Json;
 
 namespace Api.Controllers;
 
@@ -14,18 +16,35 @@ public class BaseController : ControllerBase
         _logger = logger;        
     }
 
-    protected int GetAuthenticatedUserId() => int.Parse(HttpContext.Items["userId"].ToString());
+    protected int GetAuthenticatedUserId() => int.Parse(HttpContext.Items["userId"]?.ToString());
 
-    protected ActionResult<OperationResult> HandleResult<T>(OperationResult result) where T : class
+    public void OnActionExecuting(ActionExecutingContext context)
     {
+        if (!context.ModelState.IsValid)
+        {
+            context.Result = new BadRequestObjectResult(context.ModelState);
+        }
+    }
+
+    protected ActionResult<OperationResult> HandleResult(OperationResult result)
+    {        
+        
         if (result.IsSuccess)
         {
-            return Ok(result.Result as T);
+            HttpResponseHandler.HandleSuccess(HttpContext, result);
+            return Ok();
         }
 
-        _logger.LogError(result.Error.Description);
+        else
+        {
+            var serializedResult = JsonConvert.SerializeObject(result);
+            _logger.LogError(JsonConvert.SerializeObject(result));           
 
-        return StatusCode(result.Error.StatusCode, result);
+            HttpResponseHandler.HandleError(HttpContext, result);
+
+            return BadRequest();
+        }
+        
         
     }
 

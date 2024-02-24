@@ -1,10 +1,12 @@
 ﻿using Domain.Dtos;
 using Domain.Entities;
+using Domain.ErrorHandling;
 using Infrastructure.Context;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System.Net;
 using System.Text;
 using Tests.IntegrationTests;
@@ -34,7 +36,20 @@ public class ProjectControllerIntegrationTests : IClassFixture<WebApplicationFac
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
 
         var responseContent = await response.Content.ReadAsStringAsync();
-        var projectDtoCreated = JsonConvert.DeserializeObject<ProjectDto>(responseContent);
+
+        var settings = new JsonSerializerSettings
+        {
+            ContractResolver = new DefaultContractResolver
+            {
+                NamingStrategy = new CamelCaseNamingStrategy // Use CamelCaseNamingStrategy for consistency
+                {
+                    ProcessDictionaryKeys = true, // Ignore case for dictionary keys
+                }
+            }
+        };
+
+        var operationResult = JsonConvert.DeserializeObject<Response>(responseContent, settings);
+        var projectDtoCreated = operationResult.Result as ProjectDto;
 
         Assert.NotNull(projectDtoCreated);
         Assert.Equal(newProject.Name, projectDtoCreated.Name);
@@ -119,6 +134,13 @@ public class ProjectControllerIntegrationTests : IClassFixture<WebApplicationFac
         var allRecords = await table.ToListAsync();
         table.RemoveRange(allRecords);
         await context.SaveChangesAsync();
+    }
+
+    public class Response
+    {
+        public ProjectDto Result { get; set; }
+        public bool IsSuccess { get; set; }
+        public object Errors { get; set; }
     }
 
 

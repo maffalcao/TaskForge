@@ -1,5 +1,0 @@
-2024-02-22 17:50:23.396 -03:00 [INF] Request: POST /project
-2024-02-22 17:50:23.433 -03:00 [INF] Request Body: {
-  "name": "marco falcão"
-}
-2024-02-22 17:50:24.332 -03:00 [ERR] Exception caught: Unable to resolve service for type 'Domain.Interfaces.Services.ITaskService' while attempting to activate 'Api.Controllers.ProjectController'.

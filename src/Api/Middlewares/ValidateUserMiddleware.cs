@@ -1,4 +1,5 @@
-﻿using Api.Middlewares;
+﻿using Api.Utils;
+using Domain.ErrorHandling;
 
 public class ValidateUserMiddleware : IMiddleware
 {
@@ -13,7 +14,13 @@ public class ValidateUserMiddleware : IMiddleware
     {
         if (!context.Request.Headers.ContainsKey("userId"))
         {
-            HttpHandleError.HandleError(context, StatusCodes.Status400BadRequest, "UserId header is missing!");
+
+            var error = OperationResult.Failure(
+                OperationErrors.UserNotFound().Type,
+                OperationErrors.UserNotFound().Description,
+                StatusCodes.Status400BadRequest);
+
+            HttpResponseHandler.HandleError(context, error);
             return;
         }
 
@@ -25,7 +32,14 @@ public class ValidateUserMiddleware : IMiddleware
         }
         else
         {
-            HttpHandleError.HandleError(context, StatusCodes.Status400BadRequest, "Invalid userId' header value");
+            var error = OperationResult.Failure(
+                OperationErrors.InvalidUser().Type,
+                OperationErrors.InvalidUser().Description,
+                StatusCodes.Status400BadRequest);
+
+            HttpResponseHandler.HandleError(context, error);
+
+            HttpResponseHandler.HandleError(context, StatusCodes.Status400BadRequest, "Invalid userId' header value");
             return;
         }
 

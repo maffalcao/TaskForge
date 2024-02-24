@@ -30,3 +30,6 @@ C:\Git\TaskForge\src\bin\Debug\Infrastructure.pdb
 C:\Git\TaskForge\src\obj\Debug\docker-compose.dcproj.AssemblyReference.cache
 C:\Git\TaskForge\src\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
 C:\Git\TaskForge\src\obj\Debug\docker-c.35A3FFBA.Up2Date
+C:\Git\TaskForge\src\bin\Debug\FluentValidation.AspNetCore.dll
+C:\Git\TaskForge\src\bin\Debug\FluentValidation.DependencyInjectionExtensions.dll
+C:\Git\TaskForge\src\bin\Debug\Newtonsoft.Json.dll

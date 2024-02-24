@@ -1,8 +1,0 @@
-2024-02-22 18:37:02.674 -03:00 [INF] Request: POST /project/1
-2024-02-22 18:37:02.723 -03:00 [INF] Request Body: {
-  "title": "primeira task",
-  "description": "segunda task",
-  "status": 1,
-  "priority": 3
-}
-2024-02-22 18:37:15.535 -03:00 [INF] Response: {"title":"primeira task","description":"segunda task","dueDate":"0001-01-01T00:00:00","status":1,"priority":3,"deletedAt":null,"assignedUserId":null,"projectId":1}

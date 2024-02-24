@@ -24,11 +24,15 @@ public class TaskMapping : IEntityTypeConfiguration<ProjectTask>
         builder.HasOne(t => t.AssignedUser)
             .WithMany(u => u.AssignedTasks)
             .HasForeignKey(t => t.AssignedUserId);
-
-        // Relationship with Project
+                
         builder.HasOne(t => t.Project)
             .WithMany(p => p.Tasks)
             .HasForeignKey(t => t.ProjectId)
             .IsRequired();
+
+        builder.HasMany(t => t.AuditTrails)
+            .WithOne()
+            .HasForeignKey(t => t.TaskId);
+
     }
 }

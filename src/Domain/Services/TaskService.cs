@@ -14,10 +14,10 @@ public class TaskService(
 {
     public async Task<OperationResult> AddAsync(AddTaskDto addTaskDto, int projectId, int userId)
     {
-        var user = await userRepository.GetByIdAsync(projectId);
+        var user = await userRepository.GetByIdAsync(userId);
         if (user is null)
         {
-            return OperationResult.Failure(Errors.UserNotFound(userId));
+            return OperationResult.Failure(OperationErrors.UserNotFound(userId));
         }
 
         if (addTaskDto.AssignedUserId is not null)
@@ -25,7 +25,7 @@ public class TaskService(
             var assignUserId = (int)addTaskDto.AssignedUserId;
             if ((await userRepository.Exist(assignUserId) is false))
             {
-                return OperationResult.Failure(Errors.UserNotFound(assignUserId));
+                return OperationResult.Failure(OperationErrors.UserNotFound(assignUserId));
             }
         }
 
@@ -35,7 +35,7 @@ public class TaskService(
 
         if (project is null)
         {
-            return OperationResult.Failure(Errors.ProjectNotFound(projectId));
+            return OperationResult.Failure(OperationErrors.ProjectNotFound(projectId));
         }
 
         var task = addTaskDto.Adapt<ProjectTask>();
@@ -43,7 +43,7 @@ public class TaskService(
 
         if (project.AddTask(task) is false)
         {
-            return OperationResult.Failure(Errors.ProjectMaxNumberOfTasksAchieved(projectId));
+            return OperationResult.Failure(OperationErrors.ProjectMaxNumberOfTasksAchieved(projectId));
         }
 
         var addedTask = await taskRepository.AddAsync(task);

@@ -10,7 +10,8 @@ public class ProjectTask: BaseEntity
     public int? AssignedUserId { get; set; }
     public int ProjectId { get; set; }        
     public User AssignedUser { get; set; }
-    public Project Project { get; set; }    
+    public Project Project { get; set; }
+    public ICollection<ProjectTaskAuditTrail> AuditTrails { get; set; }
 }
 
 public enum ProjectTaskStatus

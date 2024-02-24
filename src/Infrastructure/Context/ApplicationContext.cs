@@ -9,6 +9,7 @@ public class ApplicationContext : DbContext
     public DbSet<Project> Projects { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<ProjectTask> Task { get; set; }
+    public DbSet<ProjectTaskAuditTrail> TaskAuditTrail { get; set; }
     public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options) { }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -17,5 +18,6 @@ public class ApplicationContext : DbContext
         modelBuilder.ApplyConfiguration(new ProjectMapping());
         modelBuilder.ApplyConfiguration(new UserMapping());
         modelBuilder.ApplyConfiguration(new TaskMapping());
+        modelBuilder.ApplyConfiguration(new TaskAuditTrailMapping());
     }
 }

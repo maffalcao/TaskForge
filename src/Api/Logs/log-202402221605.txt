@@ -1,2 +1,0 @@
-2024-02-22 16:05:48.586 -03:00 [ERR] Failed executing DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
-ALTER TABLE [Projects] DROP CONSTRAINT [FK_Projects_Users_UserId];
