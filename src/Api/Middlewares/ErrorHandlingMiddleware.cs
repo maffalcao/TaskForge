@@ -23,7 +23,8 @@ public class ErrorHandlingMiddleware : IMiddleware
         {
             var errorMessage = $"Exception caught: {ex.Message}";            
 
-            HttpResponseHandler.HandleError(context, StatusCodes.Status500InternalServerError, errorMessage);            
+            HttpResponseHandler.HandleError(context, StatusCodes.Status500InternalServerError, errorMessage);
+            return;
                         
         }
     }

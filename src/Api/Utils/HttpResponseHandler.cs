@@ -1,5 +1,6 @@
 ﻿using Domain.Dtos;
 using Domain.ErrorHandling;
+using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
 namespace Api.Utils;

@@ -17,10 +17,12 @@ public class TaskMapping : IEntityTypeConfiguration<ProjectTask>
         builder.Property(t => t.Title).IsRequired();
         builder.Property(t => t.Description).IsRequired();
         builder.Property(t => t.DueDate);
+        builder.Property(t => t.Comment);
         builder.Property(t => t.Status).IsRequired();
         builder.Property(t => t.Priority).IsRequired();
         builder.Property(t => t.DeletedAt);
-        
+        builder.Property(t => t.ModifiedByUserId);
+
         builder.HasOne(t => t.AssignedUser)
             .WithMany(u => u.AssignedTasks)
             .HasForeignKey(t => t.AssignedUserId);
@@ -30,9 +32,9 @@ public class TaskMapping : IEntityTypeConfiguration<ProjectTask>
             .HasForeignKey(t => t.ProjectId)
             .IsRequired();
 
-        builder.HasMany(t => t.AuditTrails)
-            .WithOne()
-            .HasForeignKey(t => t.TaskId);
+        //builder.HasMany(t => t.AuditTrails)
+        //    .WithOne()
+        //    .HasForeignKey(t => t.TaskId);
 
     }
 }

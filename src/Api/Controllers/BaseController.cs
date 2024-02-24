@@ -1,5 +1,6 @@
 ﻿using Api.Utils;
 using Domain.ErrorHandling;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Newtonsoft.Json;
@@ -27,26 +28,13 @@ public class BaseController : ControllerBase
     }
 
     protected ActionResult<OperationResult> HandleResult(OperationResult result)
-    {        
-        
-        if (result.IsSuccess)
+    {
+        var statusCode = result?.Errors?.FirstOrDefault()?.StatusCode ?? StatusCodes.Status200OK;
+
+        return new ObjectResult(result)
         {
-            HttpResponseHandler.HandleSuccess(HttpContext, result);
-            return Ok();
-        }
-
-        else
-        {
-            var serializedResult = JsonConvert.SerializeObject(result);
-            _logger.LogError(JsonConvert.SerializeObject(result));           
-
-            HttpResponseHandler.HandleError(HttpContext, result);
-
-            return BadRequest();
-        }
-        
-        
+            StatusCode = statusCode,
+            ContentTypes = ["application/json"]
+        };   
     }
-
-
 }

@@ -10,8 +10,8 @@ public class TaskAuditTrailMapping : IEntityTypeConfiguration<ProjectTaskAuditTr
         builder.ToTable("TaskAuditTrails");
         builder.HasKey(t => t.Id);
         builder.Property(t => t.ChangedField).IsRequired();
-        builder.Property(t => t.PreviousValue).IsRequired();
-        builder.Property(t => t.NewValue).IsRequired();
+        builder.Property(t => t.PreviousValue);
+        builder.Property(t => t.NewValue);
         builder.Property(t => t.CreatedAt).IsRequired();
 
         builder.HasOne(t => t.ModifiedByUser)

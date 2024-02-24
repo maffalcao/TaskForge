@@ -18,8 +18,8 @@ namespace Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ChangedField = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PreviousValue = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    NewValue = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PreviousValue = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NewValue = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TaskId = table.Column<int>(type: "int", nullable: false),
                     ModifiedByUserId = table.Column<int>(type: "int", nullable: false)

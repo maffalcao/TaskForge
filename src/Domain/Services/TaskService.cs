@@ -14,29 +14,21 @@ public class TaskService(
 {
     public async Task<OperationResult> AddAsync(AddTaskDto addTaskDto, int projectId, int userId)
     {
-        var user = await userRepository.GetByIdAsync(userId);
-        if (user is null)
-        {
-            return OperationResult.Failure(OperationErrors.UserNotFound(userId));
-        }
-
-        if (addTaskDto.AssignedUserId is not null)
-        {
-            var assignUserId = (int)addTaskDto.AssignedUserId;
-            if ((await userRepository.Exist(assignUserId) is false))
-            {
-                return OperationResult.Failure(OperationErrors.UserNotFound(assignUserId));
-            }
-        }
-
         var project = (await projectRepository
             .GetAsync(p => p.Id == projectId, includeString: "Tasks"))
             .FirstOrDefault();
+
 
         if (project is null)
         {
             return OperationResult.Failure(OperationErrors.ProjectNotFound(projectId));
         }
+
+        var userValidationResult = await ValidateUsers(userId, addTaskDto.AssignedUserId);
+
+        if (!userValidationResult.IsSuccess)
+            return userValidationResult;
+       
 
         var task = addTaskDto.Adapt<ProjectTask>();
         task.ProjectId = projectId;
@@ -51,5 +43,58 @@ public class TaskService(
         return OperationResult.Success(addedTask.Adapt<TaskDto>());
 
     }
+
+    public async Task<OperationResult> UpdateAsync(UpdateTaskDto updateTaskDto, int taskId, int userId)
+    {
+        var task = await taskRepository.GetByIdAsync(taskId);        
+
+
+        if (task is null || task.DeletedAt.HasValue)
+        {
+            return OperationResult.Failure(OperationErrors.TaskNotFound(taskId));
+        }
+
+        var userValidationResult = await ValidateUsers(userId, updateTaskDto.AssignedUserId);
+
+        if (!userValidationResult.IsSuccess)
+            return userValidationResult;
+
+        if(task.Priority != updateTaskDto.Priority)
+        {
+            return OperationResult.Failure(OperationErrors.TaskPriorityCantBechanged(taskId));
+        }
+
+        task.AssignedUserId = updateTaskDto.AssignedUserId;
+        task.Title = updateTaskDto.Title;
+        task.Description = updateTaskDto.Description;        
+        task.Status = updateTaskDto.Status;
+        task.DueDate = updateTaskDto.DueDate;
+        task.ModifiedByUserId = userId;
+
+        var updatedTask = await taskRepository.UpdateAsync(task);
+
+        return OperationResult.Success(updatedTask.Adapt<TaskDto>());
+
+    }
+
+    protected async Task<OperationResult>  ValidateUsers(int userId, int? assingUserId)
+    {
+        if (await userRepository.Exist(userId) is false)
+        {
+            return OperationResult.Failure(OperationErrors.UserNotFound(userId));
+        }
+
+        if (assingUserId is not null)
+        {
+            var assignUserId = (int)assingUserId;
+            if ((await userRepository.Exist(assignUserId) is false))
+            {
+                return OperationResult.Failure(OperationErrors.UserNotFound(assignUserId));
+            }
+        }
+
+        return OperationResult.Success();
+    }
+
 
 }

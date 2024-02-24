@@ -27,6 +27,7 @@ namespace Api.Controllers
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(OperationResult), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<OperationResult>> AddProject([FromBody] AddProjectDto projectDto,
             [FromServices] IValidator<AddProjectDto> validator)
         {            
@@ -49,13 +50,28 @@ namespace Api.Controllers
         [HttpPost("{projectId:int}", Name = "AddTask")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        [ProducesResponseType((int)HttpStatusCode.BadRequest)]        
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType((int)HttpStatusCode.Conflict)]
+        [ProducesResponseType(typeof(OperationResult), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<OperationResult>> AddTask(int projectId, [FromBody] AddTaskDto dto)
         {
             var result = await _taskService.AddAsync(dto, projectId, GetAuthenticatedUserId());
 
             return HandleResult(result);
 
+        }
+
+        [HttpPut("{projectId:int}/{taskId:int}", Name = "UpdateTask")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType((int)HttpStatusCode.Conflict)]
+        [ProducesResponseType(typeof(OperationResult), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<OperationResult>> UpdateTask(int projectId, int taskId, [FromBody] UpdateTaskDto dto)
+        {
+            var result = await _taskService.UpdateAsync(dto, taskId, GetAuthenticatedUserId());
+
+            return HandleResult(result);            
         }
     }
 

@@ -27,11 +27,11 @@ public class ProjectService(IProjectRepository projectRepository, IRepository<Us
         return await projectRepository.DeleteAsync(id);
     }
 
-    public async Task<IEnumerable<ProjectDto>> GetAllByUserIdAsync(int userId)
+    public async Task<OperationResult> GetAllByUserIdAsync(int userId)
     {
         var projects = await projectRepository.GetAllByUserId(userId);
 
-        return projects.Adapt<IEnumerable<ProjectDto>>();
+        return OperationResult.Success(projects.Adapt<IEnumerable<ProjectDto>>());
     }
 
     public async Task<ProjectDto> GetByIdAsync(int id)

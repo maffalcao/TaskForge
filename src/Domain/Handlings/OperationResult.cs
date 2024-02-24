@@ -9,7 +9,7 @@ public class OperationResult
 
     public List<Error>? Errors { get; private set; }
 
-    public OperationResult(bool isSuccess) { } 
+    public OperationResult(bool isSuccess) => IsSuccess = true;
     protected OperationResult(bool isSuccess, Object? result = null, List<Error>? errors = null)
     {
         IsSuccess = isSuccess;
@@ -76,4 +76,13 @@ public static class OperationErrors
         "Project.AddNewTask.TaskLimitAchieved", 
         $"Project {projectId}'s tasks limit (20) achieved. It's not possible to add another.",
         StatusCodes.Status409Conflict);
+    public static Error TaskNotFound(int taskId) => new Error(
+        "Task.UpdateTask.TaskNotFound",
+        $"Task {taskId} not found",
+        StatusCodes.Status404NotFound);
+    public static Error TaskPriorityCantBechanged(int taskId) => new Error(
+        "Task.UpdateTask.PriorityCantBechanged",
+        $"Changing Task {taskId}' priority is not allowed",
+        StatusCodes.Status409Conflict);
+
 }
