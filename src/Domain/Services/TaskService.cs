@@ -108,18 +108,27 @@ public class TaskService(
 
         return OperationResult.Success(updatedTask.Adapt<TaskDto>());
 
-    }
+    }    
 
-    public async Task<OperationResult> GetByProjectAsync(int projectId, int userId)
+    public async Task<OperationResult> AddComment(AddTaskCommentDto commentDto, int taskId, int userId)
     {
-        if((await projectRepository.Exist(projectId)) is false)
+        var task = await taskRepository.GetByIdAsync(taskId);
+        if (!IsValidTask(task))
         {
-            return OperationResult.Failure(OperationErrors.ProjectNotFound(projectId));
+            return OperationResult.Failure(OperationErrors.TaskNotFound(taskId));
         }
 
-        var tasks = await taskRepository.GetAsync(t => t.ProjectId == projectId);
+        if((await IsValidUser(userId)) is false)
+        {
+            return OperationResult.Failure(OperationErrors.UserNotFound(userId));
+        }
 
-        return OperationResult.Success(tasks.Adapt<IEnumerable<TaskDto>>());
+        task.Comment = commentDto.Comment;
+        task.ModifiedByUserId = userId;
+
+        await taskRepository.UpdateAsync(task);
+
+        return OperationResult.Success(commentDto);
 
     }
 
@@ -128,5 +137,5 @@ public class TaskService(
         await userRepository.Exist(userId);
 
     protected bool IsValidTask(ProjectTask task) =>
-        task != null && task.DeletedAt == null;    
+        task != null && task.DeletedAt == null;
 }

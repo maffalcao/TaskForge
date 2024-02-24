@@ -11,4 +11,5 @@ public interface IProjectService
     Task<bool> DeleteAsync(int id);
 
     Task<OperationResult> AddProjectTaskAsync(AddTaskDto addProjectTaskDto, int projectId, int userId);
+    Task<OperationResult> GetTasksAsync(int projectId, int userId);
 }

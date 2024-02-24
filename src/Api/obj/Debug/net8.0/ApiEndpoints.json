@@ -173,6 +173,42 @@
   },
   {
     "ContainingType": "Api.Controllers.ProjectController",
+    "Method": "AddCommentToTask",
+    "RelativePath": "Project/{projectId}/task/{taskId}/comment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "commentDto",
+        "Type": "Domain.Dtos.AddTaskCommentDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "taskId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "projectId",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.ErrorHandling.OperationResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Api.Controllers.ProjectController",
     "Method": "GetProjectsByUserId",
     "RelativePath": "Project/{userId}",
     "HttpMethod": "GET",
