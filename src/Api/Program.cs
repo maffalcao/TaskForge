@@ -19,8 +19,8 @@ builder.Services.AddInfraestructureServices(builder.Configuration);
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
 builder.Services.AddControllers()
-    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Program>())
-    .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+    .AddFluentValidation(
+        fv => fv.RegisterValidatorsFromAssemblyContaining<Program>());    
 
 builder.Services.AddEndpointsApiExplorer();
 

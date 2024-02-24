@@ -11,7 +11,9 @@ public class TaskService(
     IProjectRepository projectRepository, 
     IRepository<User> userRepository,
     IRepository<ProjectTask> taskRepository) : ITaskService
-{
+{    
+
+
     public async Task<OperationResult> AddAsync(AddTaskDto addTaskDto, int projectId, int userId)
     {
         var project = (await projectRepository
@@ -106,13 +108,25 @@ public class TaskService(
 
         return OperationResult.Success(updatedTask.Adapt<TaskDto>());
 
-    }    
+    }
+
+    public async Task<OperationResult> GetByProjectAsync(int projectId, int userId)
+    {
+        if((await projectRepository.Exist(projectId)) is false)
+        {
+            return OperationResult.Failure(OperationErrors.ProjectNotFound(projectId));
+        }
+
+        var tasks = await taskRepository.GetAsync(t => t.ProjectId == projectId);
+
+        return OperationResult.Success(tasks.Adapt<IEnumerable<TaskDto>>());
+
+    }
+
 
     protected async Task<bool> IsValidUser(int userId) =>
         await userRepository.Exist(userId);
 
     protected bool IsValidTask(ProjectTask task) =>
-        task != null && task.DeletedAt == null;
-
-
+        task != null && task.DeletedAt == null;    
 }

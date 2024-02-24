@@ -8,4 +8,6 @@ public interface ITaskService
     Task<OperationResult> UpdateAsync(UpdateTaskDto updateTaskDto, int taskId, int userId);
     Task<OperationResult> DeleteAsync(int taskId, int userId);
 
+    Task<OperationResult> GetByProjectAsync(int projectId, int userId);
+
 }
