@@ -68,7 +68,7 @@
   {
     "ContainingType": "Api.Controllers.ProjectController",
     "Method": "AddTask",
-    "RelativePath": "Project/{projectId}",
+    "RelativePath": "Project/{projectId}/task",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -126,7 +126,7 @@
   {
     "ContainingType": "Api.Controllers.ProjectController",
     "Method": "UpdateTask",
-    "RelativePath": "Project/{projectId}/{taskId}",
+    "RelativePath": "Project/{projectId}/task/{taskId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -183,6 +183,46 @@
           "text/json"
         ],
         "StatusCode": 409
+      }
+    ]
+  },
+  {
+    "ContainingType": "Api.Controllers.ProjectController",
+    "Method": "DeleteTask",
+    "RelativePath": "Project/{projectId}/task/{taskId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "taskId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "projectId",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.ErrorHandling.OperationResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
       }
     ]
   },

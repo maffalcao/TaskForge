@@ -23,12 +23,16 @@ public class TaskService(
         {
             return OperationResult.Failure(OperationErrors.ProjectNotFound(projectId));
         }
+        if ((await IsValidUser(userId)) is false)
+        {
+            return OperationResult.Failure(OperationErrors.UserNotFound(userId));
+        }
 
-        var userValidationResult = await ValidateUsers(userId, addTaskDto.AssignedUserId);
+        if (addTaskDto.AssignedUserId != null && (await IsValidUser(userId)) is false)
+        {
+            return OperationResult.Failure(OperationErrors.UserNotFound(userId));
+        }
 
-        if (!userValidationResult.IsSuccess)
-            return userValidationResult;
-       
 
         var task = addTaskDto.Adapt<ProjectTask>();
         task.ProjectId = projectId;
@@ -44,22 +48,49 @@ public class TaskService(
 
     }
 
-    public async Task<OperationResult> UpdateAsync(UpdateTaskDto updateTaskDto, int taskId, int userId)
+    public async Task<OperationResult> DeleteAsync(int taskId, int userId)
     {
-        var task = await taskRepository.GetByIdAsync(taskId);        
+        var task = await taskRepository.GetByIdAsync(taskId);
 
-
-        if (task is null || task.DeletedAt.HasValue)
+        if(!IsValidTask(task))
         {
             return OperationResult.Failure(OperationErrors.TaskNotFound(taskId));
         }
 
-        var userValidationResult = await ValidateUsers(userId, updateTaskDto.AssignedUserId);
+        if ((await IsValidUser(userId)) is false)
+        {
+            return OperationResult.Failure(OperationErrors.UserNotFound(userId));
+        }
 
-        if (!userValidationResult.IsSuccess)
-            return userValidationResult;
+        task.DeletedAt = DateTime.UtcNow;
+        task.ModifiedByUserId = userId;
 
-        if(task.Priority != updateTaskDto.Priority)
+        var deletedTask = await taskRepository.UpdateAsync(task);
+        return OperationResult.Success(deletedTask.Adapt<TaskDto>());
+
+
+    }
+
+    public async Task<OperationResult> UpdateAsync(UpdateTaskDto updateTaskDto, int taskId, int userId)
+    {
+        var task = await taskRepository.GetByIdAsync(taskId);
+
+        if (!IsValidTask(task))
+        {
+            return OperationResult.Failure(OperationErrors.TaskNotFound(taskId));
+        }
+
+        if ((await IsValidUser(userId)) is false)
+        {
+            return OperationResult.Failure(OperationErrors.UserNotFound(userId));
+        }
+
+        if (updateTaskDto.AssignedUserId != null && (await IsValidUser(userId)) is false)
+        {
+            return OperationResult.Failure(OperationErrors.UserNotFound(userId));
+        }
+
+        if (task.Priority != updateTaskDto.Priority)
         {
             return OperationResult.Failure(OperationErrors.TaskPriorityCantBechanged(taskId));
         }
@@ -75,26 +106,13 @@ public class TaskService(
 
         return OperationResult.Success(updatedTask.Adapt<TaskDto>());
 
-    }
+    }    
 
-    protected async Task<OperationResult>  ValidateUsers(int userId, int? assingUserId)
-    {
-        if (await userRepository.Exist(userId) is false)
-        {
-            return OperationResult.Failure(OperationErrors.UserNotFound(userId));
-        }
+    protected async Task<bool> IsValidUser(int userId) =>
+        await userRepository.Exist(userId);
 
-        if (assingUserId is not null)
-        {
-            var assignUserId = (int)assingUserId;
-            if ((await userRepository.Exist(assignUserId) is false))
-            {
-                return OperationResult.Failure(OperationErrors.UserNotFound(assignUserId));
-            }
-        }
-
-        return OperationResult.Success();
-    }
+    protected bool IsValidTask(ProjectTask task) =>
+        task != null && task.DeletedAt == null;
 
 
 }

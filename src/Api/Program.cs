@@ -1,6 +1,7 @@
 using Api.Extensions;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,7 +19,8 @@ builder.Services.AddInfraestructureServices(builder.Configuration);
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 
 builder.Services.AddControllers()
-            .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Program>());
+    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<Program>())
+    .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
 builder.Services.AddEndpointsApiExplorer();
 

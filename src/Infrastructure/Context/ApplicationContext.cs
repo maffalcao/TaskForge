@@ -12,6 +12,7 @@ public class ApplicationContext : DbContext
     public DbSet<ProjectTaskAuditTrail> TaskAuditTrails { get; set; }
     public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options) { }
 
+
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
         var modifiedEntries = ChangeTracker.Entries()

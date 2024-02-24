@@ -47,7 +47,7 @@ namespace Api.Controllers
 
         }
 
-        [HttpPost("{projectId:int}", Name = "AddTask")]
+        [HttpPost("{projectId:int}/task", Name = "AddTask")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
@@ -61,7 +61,7 @@ namespace Api.Controllers
 
         }
 
-        [HttpPut("{projectId:int}/{taskId:int}", Name = "UpdateTask")]
+        [HttpPut("{projectId:int}/task/{taskId:int}", Name = "UpdateTask")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
@@ -72,6 +72,17 @@ namespace Api.Controllers
             var result = await _taskService.UpdateAsync(dto, taskId, GetAuthenticatedUserId());
 
             return HandleResult(result);            
+        }
+
+        [HttpDelete("{projectId:int}/task/{taskId:int}", Name = "DeleteTask")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]                
+        [ProducesResponseType(typeof(OperationResult), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<OperationResult>> DeleteTask(int taskId)
+        {
+            var result = await _taskService.DeleteAsync(taskId, GetAuthenticatedUserId());
+
+            return HandleResult(result);
         }
     }
 

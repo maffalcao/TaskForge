@@ -21,7 +21,9 @@ public class ErrorHandlingMiddleware : IMiddleware
         }
         catch (Exception ex)
         {
-            var errorMessage = $"Exception caught: {ex.Message}";            
+            var errorMessage = $"Exception caught: {ex.Message}";
+
+            _logger.LogError(errorMessage, ex);
 
             HttpResponseHandler.HandleError(context, StatusCodes.Status500InternalServerError, errorMessage);
             return;
