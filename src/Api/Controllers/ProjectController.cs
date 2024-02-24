@@ -70,11 +70,21 @@ namespace Api.Controllers
         [HttpGet("{projectId:int}/task", Name = "GetProjectTasks")]
         public async Task<ActionResult<OperationResult>> GetProjectTasks(int projectId)
         {
-            var result = await _taskService.GetByProjectAsync(projectId, GetAuthenticatedUserId());
+            var result = await _projectService.GetTasksAsync(projectId, GetAuthenticatedUserId());
 
             return HandleResult(result);
 
         }
+
+        [HttpPost("{projectId:int}/task/{taskId:int}/comment", Name = "AddCommentToTask")]
+        public async Task<ActionResult<OperationResult>> AddCommentToTask([FromBody] AddTaskCommentDto commentDto, int taskId)
+        {
+            var result = await _taskService.AddComment(commentDto, taskId, GetAuthenticatedUserId());
+
+            return HandleResult(result);
+        }
+
+
     }
 
 

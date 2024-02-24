@@ -7,7 +7,10 @@ using Mapster;
 
 namespace Domain.Services;
 
-public class ProjectService(IProjectRepository projectRepository, IRepository<User> userRepository) : IProjectService
+public class ProjectService(
+    IProjectRepository projectRepository, 
+    IRepository<User> userRepository,
+    IRepository<ProjectTask> taskRepository) : IProjectService
 {
     public async Task<OperationResult> AddAsync(AddProjectDto projectDto, int userId)
     {
@@ -78,6 +81,52 @@ public class ProjectService(IProjectRepository projectRepository, IRepository<Us
         return OperationResult.Success();
 
     }
+
+    public async Task<OperationResult> GetTasksAsync(int projectId, int userId)
+    {
+        if ((await projectRepository.Exist(projectId)) is false)
+        {
+            return OperationResult.Failure(OperationErrors.ProjectNotFound(projectId));
+        }
+
+        if((await userRepository.Exist(userId)) is false)
+        {
+            return OperationResult.Failure(OperationErrors.UserNotFound(userId));
+        }
+
+
+        var tasks = await taskRepository.GetAsync(
+            t => t.ProjectId == projectId, includeString: "AuditTrails");
+
+        var tasksDto = GetTaskByProjectDtos(tasks);
+
+        return OperationResult.Success(tasksDto);
+
+    }
+
+    private List<GetTaskByProjectDto> GetTaskByProjectDtos(IReadOnlyList<ProjectTask> tasks)
+    {
+        var tasksDtos = tasks.Adapt<IEnumerable<GetTaskByProjectDto>>().ToList();
+
+        for (int i = 0; i < tasksDtos.Count(); i++)
+        {
+            if (tasks[i].AuditTrails is not null)
+            {
+                var taskComments = tasks[i]?.AuditTrails.Where(a => a.ChangedField == "Comment");
+
+                if (taskComments.Any())
+                {
+                    tasksDtos[i].Comments = new List<TaskCommentDto>(
+                        taskComments.Select(t =>
+                            new TaskCommentDto(t.ModifiedByUserId, t.NewValue, t.CreatedAt)));
+
+                }
+            }
+        }
+
+        return tasksDtos;
+    }
+
 
     private async Task<bool> UserExist(int userId) =>
         await userRepository.Exist(userId);

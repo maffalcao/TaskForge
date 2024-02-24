@@ -2,8 +2,6 @@
 using FluentValidation;
 namespace Api.Validators;
 
-
-
 public class AddProjectDtoValidator : AbstractValidator<AddProjectDto>
 {
     public AddProjectDtoValidator()
