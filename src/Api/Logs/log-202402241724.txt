@@ -1,0 +1,6 @@
+2024-02-24 17:24:12.685 -03:00 [INF] Request: GET /project/2/task
+2024-02-24 17:24:28.626 -03:00 [ERR] Exception caught: Error while compiling
+source=System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[System.Collections.Generic.IReadOnlyList`1[Domain.Entities.ProjectTask],Infrastructure.Repositories.BaseRepository`1+<GetAsync>d__8[Domain.Entities.ProjectTask]]
+destination=System.Collections.Generic.IReadOnlyList`1[Domain.Entities.ProjectTask]
+type=Map
+2024-02-24 17:24:57.707 -03:00 [INF] Request: GET /project/2/task

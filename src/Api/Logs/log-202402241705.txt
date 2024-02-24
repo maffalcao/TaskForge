@@ -1,0 +1,20 @@
+2024-02-24 17:05:41.058 -03:00 [INF] Request: PUT /project/2/task/3
+2024-02-24 17:05:41.134 -03:00 [INF] Request Body: {
+  "title": "blauessss",
+  "description": "segunda task",
+  "status": 1,
+  "priority": 1  
+}
+2024-02-24 17:05:42.886 -03:00 [INF] Response: {"$id":"1","result":{"$id":"2","id":3,"title":"blauessss","description":"segunda task","dueDate":null,"status":1,"priority":1,"assignedUserId":null,"projectId":2},"isSuccess":true,"errors":null}
+2024-02-24 17:05:46.219 -03:00 [INF] Request: DELETE /project/2/task/3
+2024-02-24 17:05:46.464 -03:00 [INF] Response: {"$id":"1","result":{"$id":"2","id":3,"title":"blauessss","description":"segunda task","dueDate":null,"status":1,"priority":1,"assignedUserId":null,"projectId":2},"isSuccess":true,"errors":null}
+2024-02-24 17:05:51.498 -03:00 [INF] Request: PUT /project/2/task/3
+2024-02-24 17:05:51.498 -03:00 [INF] Request Body: {
+  "title": "blauessss",
+  "description": "segunda task",
+  "status": 1,
+  "priority": 1  
+}
+2024-02-24 17:05:51.523 -03:00 [INF] Response: {"$id":"1","result":null,"isSuccess":false,"errors":{"$id":"2","$values":[{"$id":"3","type":"Task.UpdateTask.TaskNotFound","description":"Task 3 not found","statusCode":404}]}
+2024-02-24 17:05:55.112 -03:00 [INF] Request: DELETE /project/2/task/3
+2024-02-24 17:05:55.120 -03:00 [INF] Response: {"$id":"1","result":null,"isSuccess":false,"errors":{"$id":"2","$values":[{"$id":"3","type":"Task.UpdateTask.TaskNotFound","description":"Task 3 not found","statusCode":404}]}

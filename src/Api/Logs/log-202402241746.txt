@@ -1,0 +1,14 @@
+2024-02-24 17:46:02.071 -03:00 [INF] Request: POST /project/1/task/3/comment
+2024-02-24 17:46:02.079 -03:00 [INF] Request Body: {
+  "comment": "bla"
+}
+2024-02-24 17:46:30.445 -03:00 [INF] Request: POST /project/1/task/3/comment
+2024-02-24 17:46:30.494 -03:00 [INF] Request Body: {
+  "comment": "bla"
+}
+2024-02-24 17:46:35.877 -03:00 [INF] Response: {"result":null,"isSuccess":false,"errors":[{"type":"Project.AddNewTask.ProjectNoutFound","description":"Project 3 not found","statusCode":404}]}
+2024-02-24 17:46:55.452 -03:00 [INF] Request: POST /project/1/task/3/comment
+2024-02-24 17:46:55.483 -03:00 [INF] Request Body: {
+  "comment": "bla"
+}
+2024-02-24 17:46:56.852 -03:00 [INF] Response: {"result":null,"isSuccess":false,"errors":[{"type":"Task.UpdateTask.TaskNotFound","description":"Task 3 not found","statusCode":404}]}

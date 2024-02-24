@@ -33,6 +33,9 @@ namespace Infrastructure.Migrations
                     b.Property<int>("CreatedByUserId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("DeletedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -56,7 +59,6 @@ namespace Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Comment")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DeletedAt")
@@ -112,10 +114,10 @@ namespace Infrastructure.Migrations
                     b.Property<int>("ModifiedByUserId")
                         .HasColumnType("int");
 
-                    b.Property<string>("NewValue")                        
+                    b.Property<string>("NewValue")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PreviousValue")                        
+                    b.Property<string>("PreviousValue")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("TaskId")

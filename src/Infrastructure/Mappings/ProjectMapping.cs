@@ -11,6 +11,7 @@ public class ProjectMapping : IEntityTypeConfiguration<Project>
         builder.ToTable("Projects");
         builder.HasKey(p => p.Id);
         builder.Property(p => p.Name).IsRequired();
+        builder.Property(p => p.DeletedAt);
 
         builder.HasOne(p => p.CreatedByUser)
             .WithMany(u => u.Projects)

@@ -6,7 +6,11 @@ public class Project : BaseEntity
     private readonly int MAX_NUMBER_OF_TASKS = 20;
     public string Name { get; set; }
     public int CreatedByUserId { get; set; }
+    public DateTime? DeletedAt { get; set; }
     public User CreatedByUser { get; set; }
+
+    
+
     public ICollection<ProjectTask> Tasks { get; set; }
 
     public Project(string name, int createdByUserId)

@@ -1,0 +1,26 @@
+2024-02-24 17:29:02.775 -03:00 [INF] Request: GET /project/1/task
+2024-02-24 17:29:02.846 -03:00 [INF] Response: {"result":[],"isSuccess":true,"errors":null}
+2024-02-24 17:29:04.095 -03:00 [INF] Request: GET /project/1/task
+2024-02-24 17:29:04.119 -03:00 [INF] Response: {"result":[],"isSuccess":true,"errors":null}
+2024-02-24 17:29:08.930 -03:00 [INF] Request: POST /project/1/task
+2024-02-24 17:29:08.935 -03:00 [INF] Request Body: {
+  "title": "primeira task",
+  "description": "segunda task",
+  "status": 5,
+  "priority": 1,
+  "assignedUserId": 2,
+  "deletedAt": "2024-01-01"
+}
+2024-02-24 17:29:09.318 -03:00 [INF] Response: {"result":{"id":8,"title":"primeira task","description":"segunda task","dueDate":null,"status":5,"priority":1,"assignedUserId":2,"projectId":1},"isSuccess":true,"errors":null}
+2024-02-24 17:29:10.652 -03:00 [INF] Request: POST /project/1/task
+2024-02-24 17:29:10.652 -03:00 [INF] Request Body: {
+  "title": "primeira task",
+  "description": "segunda task",
+  "status": 5,
+  "priority": 1,
+  "assignedUserId": 2,
+  "deletedAt": "2024-01-01"
+}
+2024-02-24 17:29:10.681 -03:00 [INF] Response: {"result":{"id":9,"title":"primeira task","description":"segunda task","dueDate":null,"status":5,"priority":1,"assignedUserId":2,"projectId":1},"isSuccess":true,"errors":null}
+2024-02-24 17:29:12.780 -03:00 [INF] Request: GET /project/1/task
+2024-02-24 17:29:12.796 -03:00 [INF] Response: {"result":[{"id":8,"title":"primeira task","description":"segunda task","dueDate":null,"status":5,"priority":1,"assignedUserId":2,"projectId":1},{"id":9,"title":"primeira task","description":"segunda task","dueDate":null,"status":5,"priority":1,"assignedUserId":2,"projectId":1}],"isSuccess":true,"errors":null}

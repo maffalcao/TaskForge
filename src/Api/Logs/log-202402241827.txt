@@ -1,0 +1,4 @@
+2024-02-24 18:27:05.671 -03:00 [INF] Request: GET /project/1/task
+2024-02-24 18:27:27.099 -03:00 [INF] Response: {"result":[{"id":8,"title":"primeira task","description":"segunda task","dueDate":null,"status":5,"priority":1,"assignedUserId":2,"projectId":1,"comments":null},{"id":9,"title":"primeira task","description":"segunda task","dueDate":null,"status":5,"priority":1,"assignedUserId":2,"projectId":1,"comments":null}],"isSuccess":true,"errors":null}
+2024-02-24 18:27:41.664 -03:00 [INF] Request: GET /project/1/task
+2024-02-24 18:27:45.649 -03:00 [INF] Response: {"result":[{"id":8,"title":"primeira task","description":"segunda task","dueDate":null,"status":5,"priority":1,"assignedUserId":2,"projectId":1,"comments":null},{"id":9,"title":"primeira task","description":"segunda task","dueDate":null,"status":5,"priority":1,"assignedUserId":2,"projectId":1,"comments":null}],"isSuccess":true,"errors":null}

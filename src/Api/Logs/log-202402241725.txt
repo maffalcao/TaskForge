@@ -1,0 +1,1 @@
+2024-02-24 17:25:38.720 -03:00 [INF] Request: GET /project/2/task
