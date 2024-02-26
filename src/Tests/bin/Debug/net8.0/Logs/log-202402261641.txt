@@ -1,3 +1,0 @@
-2024-02-26 16:41:28.465 -03:00 [INF] Request: GET /project/30
-2024-02-26 16:41:28.583 -03:00 [INF] Response: {"result":[{"id":180,"name":"Placeat magnam magni aut corporis.","createdByUserId":30,"createdByUser":{"id":30,"name":"Elsie Langosh","profileName":"teamMember"}},{"id":181,"name":"Consequuntur iste rerum numquam aperiam.","createdByUserId":30,"createdByUser":{"id":30,"name":"Elsie Langosh","profileName":"teamMember"}},{"id":182,"name":"Voluptatem eius maiores adipisci eos.","createdByUserId":30,"createdByUser":{"id":30,"name":"Elsie Langosh","profileName":"teamMember"}}],"isSuccess":true,"errors":null}
-2024-02-26 16:41:59.540 -03:00 [INF] Request: DELETE /project/185

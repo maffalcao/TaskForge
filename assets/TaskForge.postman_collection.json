@@ -1,0 +1,361 @@
+{
+	"info": {
+		"_postman_id": "cc90fb91-57f2-4d50-8fd6-96974d2ff66e",
+		"name": "TaskForge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23504888"
+	},
+	"item": [
+		{
+			"name": "Project",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "text/plain"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserId",
+								"value": "{{task_forge_authenticated_userId}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Primeiro projeto\"\r\n}"
+						},
+						"url": {
+							"raw": "{{task_forge_host}}/project",
+							"host": [
+								"{{task_forge_host}}"
+							],
+							"path": [
+								"project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetallByUserId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "text/plain"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserId",
+								"value": "{{task_forge_authenticated_userId}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{task_forge_host}}/project/{{task_forge_userId}}",
+							"host": [
+								"{{task_forge_host}}"
+							],
+							"path": [
+								"project",
+								"{{task_forge_userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetTasksByProject",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "text/plain"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserId",
+								"value": "{{task_forge_authenticated_userId}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{task_forge_host}}/project/{{task_forge_projectId}}/task",
+							"host": [
+								"{{task_forge_host}}"
+							],
+							"path": [
+								"project",
+								"{{task_forge_projectId}}",
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "text/plain"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserId",
+								"value": "{{task_forge_authenticated_userId}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{task_forge_host}}/project/{{task_forge_projectId}}",
+							"host": [
+								"{{task_forge_host}}"
+							],
+							"path": [
+								"project",
+								"{{task_forge_projectId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "text/plain"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserId",
+								"value": "{{task_forge_authenticated_userId}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"2 task\",\r\n  \"description\": \"Essa é a 2 task\",\r\n  \"status\": 5,\r\n  \"priority\": 1,\r\n  \"assignedUserId\": 1  \r\n}"
+						},
+						"url": {
+							"raw": "{{task_forge_host}}/project/{{task_forge_projectId}}/task",
+							"host": [
+								"{{task_forge_host}}"
+							],
+							"path": [
+								"project",
+								"{{task_forge_projectId}}",
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "text/plain"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserId",
+								"value": "{{task_forge_authenticated_userId}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"1\",\r\n  \"description\": \"1\",\r\n  \"status\": 3,\r\n  \"priority\": 1,\r\n  \"assignedUserId\": 2\r\n}"
+						},
+						"url": {
+							"raw": "{{task_forge_host}}/project/{{task_forge_projectId}}/task/{{task_forge_taskId}}",
+							"host": [
+								"{{task_forge_host}}"
+							],
+							"path": [
+								"project",
+								"{{task_forge_projectId}}",
+								"task",
+								"{{task_forge_taskId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "text/plain"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserId",
+								"value": "{{task_forge_authenticated_userId}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{task_forge_host}}/project/{{task_forge_projectId}}/task/{{task_forge_taskId}}",
+							"host": [
+								"{{task_forge_host}}"
+							],
+							"path": [
+								"project",
+								"{{task_forge_projectId}}",
+								"task",
+								"{{task_forge_taskId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetReport",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "text/plain"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserId",
+								"value": "{{task_forge_authenticated_userId}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{task_forge_host}}/project/task-report",
+							"host": [
+								"{{task_forge_host}}"
+							],
+							"path": [
+								"project",
+								"task-report"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddComment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "text/plain"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "UserId",
+								"value": "{{task_forge_authenticated_userId}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"comment\": \"fdsfdasfasdfddfasdfafsad\"\r\n}"
+						},
+						"url": {
+							"raw": "{{task_forge_host}}/project/{{task_forge_projectId}}/task/{{task_forge_taskId}}/comment",
+							"host": [
+								"{{task_forge_host}}"
+							],
+							"path": [
+								"project",
+								"{{task_forge_projectId}}",
+								"task",
+								"{{task_forge_taskId}}",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

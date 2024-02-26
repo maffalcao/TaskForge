@@ -8,7 +8,7 @@ using Mapster;
 namespace Domain.Services;
 
 public class ProjectService(
-    IProjectRepository projectRepository, 
+    IRepository<Project> projectRepository, 
     IRepository<User> userRepository,
     IRepository<ProjectTask> taskRepository) : IProjectService
 {
@@ -20,9 +20,13 @@ public class ProjectService(
         }
 
         var project = new Project(projectDto.Name, userId);
-        project = await projectRepository.AddProjectAsync(project);
 
-        return OperationResult.Success(project.Adapt<ProjectDto>());
+        var addedProject = await projectRepository.AddAsync(project);
+
+        var projects = await projectRepository.GetAsync(p => 
+            p.Id == addedProject.Id, includeString: "CreatedByUser");
+        
+        return OperationResult.Success(projects.FirstOrDefault().Adapt<ProjectDto>());
 
     }
     public async Task<OperationResult> DeleteAsync(int projectId, int userId)
@@ -63,8 +67,9 @@ public class ProjectService(
         {
             return OperationResult.Failure(OperationErrors.UserNotFound(userId));
         }
-
-        var projects = await projectRepository.GetAllByUserId(userId);
+        
+        var projects = await projectRepository.GetAsync(p => 
+            p.CreatedByUserId == userId && p.DeletedAt == null, includeString: "CreatedByUser");
 
         return OperationResult.Success(projects.Adapt<IEnumerable<ProjectDto>>());
     }
@@ -158,6 +163,7 @@ public class ProjectService(
 
         return tasksDtos;
     }
+
 
     private async Task<Project> GetProject(int projectId, string includeString)
     {

@@ -1,0 +1,3 @@
+2024-02-26 19:37:13.539 -03:00 [INF] Request: POST /project/266/task
+2024-02-26 19:37:13.544 -03:00 [INF] Request Body: {"Title":null,"Description":"Nulla praesentium natus sint aliquam ea dolorem reprehenderit et id.","DueDate":null,"Status":2,"Priority":3,"AssignedUserId":null}
+2024-02-26 19:37:13.552 -03:00 [INF] Response: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.1","title":"One or more validation errors occurred.","status":400,"errors":{"Title":["The Title field is required.","Title_CantBeEmpty"]},"traceId":"00-efbce24e8ae2f5206dc12b843948ae60-4eff2584a6f0db4e-00"}
