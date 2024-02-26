@@ -1,0 +1,7 @@
+2024-02-26 16:43:31.135 -03:00 [INF] Request: GET /project/40
+2024-02-26 16:43:31.147 -03:00 [INF] Request: DELETE /project/240
+2024-02-26 16:43:31.156 -03:00 [INF] Request: POST /project/241/task
+2024-02-26 16:43:31.156 -03:00 [INF] Request Body: {"Title":"Itaque eaque sapiente ipsa nam.","Description":null,"DueDate":null,"Status":1,"Priority":3,"AssignedUserId":null}
+2024-02-26 16:43:31.186 -03:00 [INF] Response: {"result":[{"id":234,"name":"Ut animi laudantium minus ut.","createdByUserId":40,"createdByUser":{"id":40,"name":"Minerva Larson","profileName":"teamMember"}},{"id":235,"name":"Suscipit qui voluptatem perspiciatis et.","createdByUserId":40,"createdByUser":{"id":40,"name":"Minerva Larson","profileName":"teamMember"}},{"id":237,"name":"Laudantium maxime eaque excepturi tempore.","createdByUserId":40,"createdByUser":{"id":40,"name":"Minerva Larson","profileName":"teamMember"}}],"isSuccess":true,"errors":null}
+2024-02-26 16:43:31.224 -03:00 [INF] Response: {"result":null,"isSuccess":true,"errors":null}
+2024-02-26 16:43:31.240 -03:00 [INF] Response: {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.1","title":"One or more validation errors occurred.","status":400,"errors":{"Description":["The Description field is required.","Description_CantBeEmpty"]},"traceId":"00-add9746de7ebbd3f4626593a54beacce-c363e2f403b07680-00"}

@@ -55,12 +55,15 @@ public class ProjectService(
 
         return OperationResult.Success(); 
         
-
-        
     }
 
     public async Task<OperationResult> GetAllByUserIdAsync(int userId)
     {
+        if ((await UserExist(userId)) is false)
+        {
+            return OperationResult.Failure(OperationErrors.UserNotFound(userId));
+        }
+
         var projects = await projectRepository.GetAllByUserId(userId);
 
         return OperationResult.Success(projects.Adapt<IEnumerable<ProjectDto>>());

@@ -8,6 +8,8 @@ C:\Git\TaskForge\src\Api\bin\Debug\net8.0\Api.pdb
 C:\Git\TaskForge\src\Api\bin\Debug\net8.0\Azure.Core.dll
 C:\Git\TaskForge\src\Api\bin\Debug\net8.0\Azure.Identity.dll
 C:\Git\TaskForge\src\Api\bin\Debug\net8.0\FluentValidation.dll
+C:\Git\TaskForge\src\Api\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
+C:\Git\TaskForge\src\Api\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll
 C:\Git\TaskForge\src\Api\bin\Debug\net8.0\Humanizer.dll
 C:\Git\TaskForge\src\Api\bin\Debug\net8.0\Mapster.dll
 C:\Git\TaskForge\src\Api\bin\Debug\net8.0\Mapster.Core.dll
@@ -149,5 +151,3 @@ C:\Git\TaskForge\src\Api\obj\Debug\net8.0\refint\Api.dll
 C:\Git\TaskForge\src\Api\obj\Debug\net8.0\Api.pdb
 C:\Git\TaskForge\src\Api\obj\Debug\net8.0\Api.genruntimeconfig.cache
 C:\Git\TaskForge\src\Api\obj\Debug\net8.0\ref\Api.dll
-C:\Git\TaskForge\src\Api\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
-C:\Git\TaskForge\src\Api\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll

@@ -1,0 +1,5 @@
+2024-02-26 16:43:31.125 -03:00 [INF] Request: DELETE /project/233/task/83
+2024-02-26 16:43:31.125 -03:00 [INF] Request: POST /project/233/task/83/comment
+2024-02-26 16:43:31.131 -03:00 [INF] Request Body: {"Comment":"Sint reiciendis tenetur deserunt et dolor."}
+2024-02-26 16:43:31.244 -03:00 [INF] Response: {"result":{"comment":"Sint reiciendis tenetur deserunt et dolor."},"isSuccess":true,"errors":null}
+2024-02-26 16:43:31.268 -03:00 [INF] Response: {"result":{"id":83,"title":"Error distinctio corrupti sequi autem.","description":"Placeat dolore et officiis voluptatum cum rerum dignissimos soluta nihil.","dueDate":null,"completedAt":null,"status":2,"priority":3,"deletedAt":"2024-02-26T19:43:31.1736192Z","assignedUserId":null,"projectId":233},"isSuccess":true,"errors":null}

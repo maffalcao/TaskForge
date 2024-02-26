@@ -14,6 +14,7 @@ public class ProjectServiceTests
         // Arrange
         var userId = 1;
         var projectDto = new AddProjectDto { Name = "Test Project" };
+        
 
         var userRepositoryMock = new Mock<IRepository<User>>();
         userRepositoryMock.Setup(repo => repo.Exist(userId)).ReturnsAsync(true);
@@ -22,7 +23,8 @@ public class ProjectServiceTests
         projectRepositoryMock.Setup(repo => repo.AddProjectAsync(It.IsAny<Project>()))
                              .ReturnsAsync(new Project(projectDto.Name, userId));
 
-        var service = new ProjectService(projectRepositoryMock.Object, userRepositoryMock.Object);
+        var service = new ProjectService(projectRepositoryMock.Object, 
+            userRepositoryMock.Object, Mock.Of<IRepository<ProjectTask>>());
 
         // Act
         var result = await service.AddAsync(projectDto, userId);
@@ -40,9 +42,11 @@ public class ProjectServiceTests
         var projectDto = new AddProjectDto { Name = "Test Project" };
 
         var userRepositoryMock = new Mock<IRepository<User>>();
+        
         userRepositoryMock.Setup(repo => repo.Exist(userId)).ReturnsAsync(false);
 
-        var service = new ProjectService(Mock.Of<IProjectRepository>(), userRepositoryMock.Object);
+        var service = new ProjectService(Mock.Of<IProjectRepository>(), 
+            userRepositoryMock.Object, Mock.Of<IRepository<ProjectTask>>());
 
         // Act
         var result = await service.AddAsync(projectDto, userId);

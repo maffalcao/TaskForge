@@ -1,7 +1,0 @@
-2024-02-20 18:04:01.280 -03:00 [INF] Request: POST /project
-2024-02-20 18:04:01.311 -03:00 [INF] Request Body: {"Name":"Test Project"}
-2024-02-20 18:04:01.894 -03:00 [INF] Response: {"id":12,"name":"Test Project","createdByUserId":1,"createdByUser":{"id":1,"name":"Marco","profileName":"manager"}}
-2024-02-20 18:04:16.798 -03:00 [INF] Request: POST /project
-2024-02-20 18:04:16.816 -03:00 [INF] Request Body: {"Name":"Test Project"}
-2024-02-20 18:04:16.958 -03:00 [ERR] User not found
-2024-02-20 18:04:16.964 -03:00 [INF] Response: {"result":null,"isSuccess":false,"isFailure":true,"errorMessage":"User not found"}

@@ -249,7 +249,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Domain.Dtos.ProjectDto",
+        "Type": "Domain.ErrorHandling.OperationResult",
         "MediaTypes": [
           "text/plain",
           "application/json",
