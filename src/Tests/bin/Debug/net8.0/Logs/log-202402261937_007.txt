@@ -1,0 +1,3 @@
+2024-02-26 19:37:13.591 -03:00 [INF] Request: POST /project/269/task
+2024-02-26 19:37:13.596 -03:00 [INF] Request Body: {"Title":"Deleniti et ab et eos.","Description":"Rerum unde minus est repellat ex sunt impedit error fugit.","DueDate":null,"Status":1,"Priority":2,"AssignedUserId":null}
+2024-02-26 19:37:13.619 -03:00 [INF] Response: {"result":{"id":103,"title":"Deleniti et ab et eos.","description":"Rerum unde minus est repellat ex sunt impedit error fugit.","dueDate":null,"completedAt":null,"status":1,"priority":2,"deletedAt":null,"assignedUserId":null,"projectId":269},"isSuccess":true,"errors":null}

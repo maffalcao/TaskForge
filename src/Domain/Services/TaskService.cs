@@ -8,7 +8,7 @@ using Mapster;
 namespace Domain.Services;
 
 public class TaskService(
-    IProjectRepository projectRepository, 
+    IRepository<Project> projectRepository, 
     IRepository<User> userRepository,
     IRepository<ProjectTask> taskRepository) : ITaskService
 {    
@@ -25,12 +25,12 @@ public class TaskService(
         {
             return OperationResult.Failure(OperationErrors.ProjectNotFound(projectId));
         }
-        if ((await IsValidUser(userId)) is false)
+        if ((await userRepository.Exist(userId)) is false)
         {
             return OperationResult.Failure(OperationErrors.UserNotFound(userId));
         }
 
-        if (addTaskDto.AssignedUserId != null && (await IsValidUser(userId)) is false)
+        if (addTaskDto.AssignedUserId != null && (await userRepository.Exist(userId)) is false)
         {
             return OperationResult.Failure(OperationErrors.UserNotFound(userId));
         }
@@ -59,7 +59,7 @@ public class TaskService(
             return OperationResult.Failure(OperationErrors.TaskNotFound(taskId));
         }
 
-        if ((await IsValidUser(userId)) is false)
+        if ((await userRepository.Exist(userId)) is false)
         {
             return OperationResult.Failure(OperationErrors.UserNotFound(userId));
         }
@@ -82,12 +82,12 @@ public class TaskService(
             return OperationResult.Failure(OperationErrors.TaskNotFound(taskId));
         }
 
-        if ((await IsValidUser(userId)) is false)
+        if ((await userRepository.Exist(userId)) is false)
         {
             return OperationResult.Failure(OperationErrors.UserNotFound(userId));
         }
 
-        if (updateTaskDto.AssignedUserId != null && (await IsValidUser(userId)) is false)
+        if (updateTaskDto.AssignedUserId != null && (await userRepository.Exist(userId)) is false)
         {
             return OperationResult.Failure(OperationErrors.UserNotFound(userId));
         }
@@ -121,7 +121,7 @@ public class TaskService(
             return OperationResult.Failure(OperationErrors.TaskNotFound(taskId));
         }
 
-        if((await IsValidUser(userId)) is false)
+        if((await userRepository.Exist(userId)) is false)
         {
             return OperationResult.Failure(OperationErrors.UserNotFound(userId));
         }
@@ -165,8 +165,7 @@ public class TaskService(
     }
 
 
-    protected async Task<bool> IsValidUser(int userId) =>
-        await userRepository.Exist(userId);
+
 
     protected bool IsValidTask(ProjectTask task) =>
         task != null && task.DeletedAt == null;

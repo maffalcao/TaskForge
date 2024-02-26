@@ -13,7 +13,9 @@ public class Project : BaseEntity
 
     public ICollection<ProjectTask> Tasks { get; set; }
 
-    public Project() { }
+    public Project() {
+        Tasks = new List<ProjectTask>();
+    }
 
     public Project(string name, int createdByUserId)
     {

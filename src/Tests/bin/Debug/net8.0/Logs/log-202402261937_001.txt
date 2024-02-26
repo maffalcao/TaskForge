@@ -1,0 +1,7 @@
+2024-02-26 19:37:13.310 -03:00 [INF] Request: DELETE /project/254/task/95
+2024-02-26 19:37:13.310 -03:00 [INF] Request: POST /project/254/task/95/comment
+2024-02-26 19:37:13.318 -03:00 [INF] Request: GET /project/44
+2024-02-26 19:37:13.318 -03:00 [INF] Request Body: {"Comment":"Qui deserunt nostrum ea veniam minus."}
+2024-02-26 19:37:13.384 -03:00 [INF] Response: {"result":[{"id":255,"name":"Expedita ut culpa facilis vel.","createdByUserId":44,"createdByUser":{"id":44,"name":"Junius Franecki","profileName":"teamMember"}},{"id":256,"name":"Voluptatem earum optio sint fuga.","createdByUserId":44,"createdByUser":{"id":44,"name":"Junius Franecki","profileName":"teamMember"}},{"id":258,"name":"Temporibus ullam suscipit nisi dolores.","createdByUserId":44,"createdByUser":{"id":44,"name":"Junius Franecki","profileName":"teamMember"}}],"isSuccess":true,"errors":null}
+2024-02-26 19:37:13.473 -03:00 [INF] Response: {"result":{"comment":"Qui deserunt nostrum ea veniam minus."},"isSuccess":true,"errors":null}
+2024-02-26 19:37:13.484 -03:00 [INF] Response: {"result":{"id":95,"title":"Itaque alias dolorum qui consectetur.","description":"Saepe distinctio corporis suscipit aliquid maxime et placeat sit illo.","dueDate":null,"completedAt":null,"status":3,"priority":1,"deletedAt":"2024-02-26T22:37:13.3603462Z","assignedUserId":null,"projectId":254},"isSuccess":true,"errors":null}

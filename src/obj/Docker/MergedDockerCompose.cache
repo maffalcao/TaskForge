@@ -1,0 +1,38 @@
+name: dockercompose2292404159397204402
+services:
+  api:
+    build:
+      context: C:\Git\TaskForge\src
+      dockerfile: Api/Dockerfile
+    depends_on:
+      taskForgedb:
+        condition: service_started
+        required: true
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTP_PORTS: "8080"
+      DatabaseSettings:ConnectionString: Server=taskForgedb;Port=5432;Database=TaskForgeDb;User Id=admin;Password=SwN12345678;
+    image: api
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 8080
+        protocol: tcp
+  taskForgedb:
+    container_name: taskForgedb
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: SwN12345678
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 1433
+        published: "1433"
+        protocol: tcp
+    restart: always
+networks:
+  default:
+    name: dockercompose2292404159397204402_default
