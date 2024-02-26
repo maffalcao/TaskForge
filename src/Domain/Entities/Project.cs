@@ -13,6 +13,8 @@ public class Project : BaseEntity
 
     public ICollection<ProjectTask> Tasks { get; set; }
 
+    public Project() { }
+
     public Project(string name, int createdByUserId)
     {
         Name = name;

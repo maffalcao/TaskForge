@@ -1,0 +1,6 @@
+2024-02-26 16:43:24.879 -03:00 [INF] Request: POST /project/227/task
+2024-02-26 16:43:24.883 -03:00 [INF] Request Body: {"Title":"Placeat qui repellendus nesciunt blanditiis.","Description":"Enim dolorum vel dignissimos ut veniam provident rerum placeat quia.","DueDate":null,"Status":1,"Priority":3,"AssignedUserId":null}
+2024-02-26 16:43:24.903 -03:00 [INF] Response: {"result":{"id":79,"title":"Placeat qui repellendus nesciunt blanditiis.","description":"Enim dolorum vel dignissimos ut veniam provident rerum placeat quia.","dueDate":null,"completedAt":null,"status":1,"priority":3,"deletedAt":null,"assignedUserId":null,"projectId":227},"isSuccess":true,"errors":null}
+2024-02-26 16:43:30.876 -03:00 [INF] Request: POST /project
+2024-02-26 16:43:30.895 -03:00 [INF] Request Body: {"Name":"Consequuntur vero et eos cupiditate."}
+2024-02-26 16:43:31.178 -03:00 [INF] Response: {"result":{"id":236,"name":"Consequuntur vero et eos cupiditate.","createdByUserId":1,"createdByUser":{"id":1,"name":"Mahdi Peck","profileName":"manager"}},"isSuccess":true,"errors":null}

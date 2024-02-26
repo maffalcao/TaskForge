@@ -29,8 +29,6 @@ builder.Services.AddSwaggerGen();
 // configure middlewares
 builder.Services.ConfigureMiddlewares();
 
-
-
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

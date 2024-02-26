@@ -1,0 +1,4 @@
+2024-02-26 15:16:05.719 -03:00 [INF] Request: GET /project/2
+2024-02-26 15:16:16.587 -03:00 [INF] Response: {"result":[],"isSuccess":true,"errors":null}
+2024-02-26 15:16:39.145 -03:00 [INF] Request: GET /project/1
+2024-02-26 15:16:41.044 -03:00 [INF] Response: {"result":[{"id":1,"name":"Primeiro projeto","createdByUserId":1,"createdByUser":{"id":1,"name":"Mahdi Peck","profileName":"manager"}}],"isSuccess":true,"errors":null}

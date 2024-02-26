@@ -1,0 +1,2 @@
+2024-02-26 16:43:24.648 -03:00 [INF] Request: DELETE /project/219
+2024-02-26 16:43:24.723 -03:00 [INF] Response: {"result":null,"isSuccess":true,"errors":null}

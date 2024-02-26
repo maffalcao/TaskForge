@@ -1,4 +1,0 @@
-2024-02-23 19:51:09.219 -03:00 [INF] Request: POST /project
-2024-02-23 19:51:09.238 -03:00 [INF] Request Body: {"Name":"Test Project"}
-2024-02-23 19:51:09.422 -03:00 [ERR] {"Result":null,"IsSuccess":false,"Errors":[{"Type":"Project.AddNewProject.UserNotFound","Description":"User 999 not found","StatusCode":404}]}
-2024-02-23 19:51:09.445 -03:00 [INF] Response: {"result":null,"isSuccess":false,"errors":[{"type":"Project.AddNewProject.UserNotFound","description":"User 999 not found","statusCode":404}]}{"type":"https://tools.ietf.org/html/rfc9110#section-15.5.1","title":"Bad Request","status":400,"traceId":"00-e3e0773672db073a8db1149adde9b74b-3f3b4ba593604d56-00"}

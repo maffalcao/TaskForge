@@ -1,0 +1,2 @@
+2024-02-26 16:43:24.731 -03:00 [INF] Request: GET /project/100
+2024-02-26 16:43:24.761 -03:00 [INF] Response: {"result":null,"isSuccess":false,"errors":[{"type":"Project.AddNewProject.UserNotFound","description":"User 100 not found","statusCode":404}]}

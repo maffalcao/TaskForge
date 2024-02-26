@@ -1,0 +1,4 @@
+2024-02-26 16:42:03.564 -03:00 [INF] Response: {"result":null,"isSuccess":true,"errors":null}
+2024-02-26 16:42:57.237 -03:00 [INF] Request: POST /project
+2024-02-26 16:42:57.265 -03:00 [INF] Request Body: {"Name":"Rerum modi dolorem tenetur qui."}
+2024-02-26 16:42:57.674 -03:00 [INF] Response: {"result":{"id":194,"name":"Rerum modi dolorem tenetur qui.","createdByUserId":1,"createdByUser":{"id":1,"name":"Mahdi Peck","profileName":"manager"}},"isSuccess":true,"errors":null}

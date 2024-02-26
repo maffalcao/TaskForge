@@ -1,2 +1,0 @@
-2024-02-23 19:51:09.729 -03:00 [INF] Request: GET /project/1
-2024-02-23 19:51:09.799 -03:00 [INF] Response: [{"id":1020,"name":"projeto1","createdByUserId":1,"createdByUser":{"id":1,"name":"Marco","profileName":"manager"}},{"id":1021,"name":"projeto2","createdByUserId":1,"createdByUser":{"id":1,"name":"Marco","profileName":"manager"}},{"id":1022,"name":"projeto3","createdByUserId":1,"createdByUser":{"id":1,"name":"Marco","profileName":"manager"}}]

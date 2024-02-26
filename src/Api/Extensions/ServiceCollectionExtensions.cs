@@ -27,8 +27,7 @@ public static class ServiceCollectionExtensions
             options.UseSqlServer(
                 configuration.GetConnectionString("TaskForgeDbConnectionString")));
 
-        services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
-        services.AddScoped<IProjectRepository, ProjectRepository>();
+        services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));       
 
     }
 }

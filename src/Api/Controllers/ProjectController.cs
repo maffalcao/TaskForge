@@ -33,14 +33,13 @@ namespace Api.Controllers
         }
 
         [HttpGet("{userId:int}", Name = "GetProjectsByUserId")]       
-        public async Task<ActionResult<ProjectDto>> GetProjectsByUserId(int userId)
+        public async Task<ActionResult<OperationResult>> GetProjectsByUserId(int userId)
         {
             var result = await _projectService.GetAllByUserIdAsync(userId);
 
-            return Ok(result);
+            return HandleResult(result);
 
         }
-
 
         [HttpPost("{projectId:int}/task", Name = "AddTask")]        
         public async Task<ActionResult<OperationResult>> AddTask(int projectId, [FromBody] AddTaskDto dto)

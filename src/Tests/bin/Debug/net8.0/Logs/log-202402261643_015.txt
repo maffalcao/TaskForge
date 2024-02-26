@@ -1,0 +1,3 @@
+2024-02-26 16:43:31.367 -03:00 [INF] Request: POST /project/248/task
+2024-02-26 16:43:31.371 -03:00 [INF] Request Body: {"Title":"Et at molestias illo molestias.","Description":"Velit sunt saepe voluptatum aliquam illo neque quia vitae dolorum.","DueDate":null,"Status":1,"Priority":1,"AssignedUserId":null}
+2024-02-26 16:43:31.402 -03:00 [INF] Response: {"result":{"id":91,"title":"Et at molestias illo molestias.","description":"Velit sunt saepe voluptatum aliquam illo neque quia vitae dolorum.","dueDate":null,"completedAt":null,"status":1,"priority":1,"deletedAt":null,"assignedUserId":null,"projectId":248},"isSuccess":true,"errors":null}

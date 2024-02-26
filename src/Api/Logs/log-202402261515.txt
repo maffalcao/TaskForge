@@ -1,0 +1,4 @@
+2024-02-26 15:15:44.708 -03:00 [INF] Request: GET /project/2
+2024-02-26 15:15:44.762 -03:00 [INF] Response: {"result":[],"isSuccess":true,"errors":null}
+2024-02-26 15:15:47.826 -03:00 [INF] Request: GET /project/2
+2024-02-26 15:15:47.849 -03:00 [INF] Response: {"result":[],"isSuccess":true,"errors":null}

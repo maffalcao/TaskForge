@@ -1,2 +1,0 @@
-2024-02-24 18:06:32.049 -03:00 [INF] Request: GET /project/1/task
-2024-02-24 18:06:43.801 -03:00 [ERR] Exception caught: Value cannot be null. (Parameter 'source')

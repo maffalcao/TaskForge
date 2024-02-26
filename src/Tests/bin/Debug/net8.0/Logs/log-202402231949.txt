@@ -1,7 +1,0 @@
-2024-02-23 19:49:00.113 -03:00 [INF] Request: POST /project
-2024-02-23 19:49:00.149 -03:00 [INF] Request Body: {"Name":"Test Project"}
-2024-02-23 19:49:00.647 -03:00 [INF] Response: {"result":{"id":1013,"name":"Test Project","createdByUserId":1,"createdByUser":{"id":1,"name":"Marco","profileName":"manager"}},"isSuccess":true,"errors":null}
-2024-02-23 19:49:41.382 -03:00 [INF] Request: POST /project
-2024-02-23 19:49:41.398 -03:00 [INF] Request Body: {"Name":"Test Project"}
-2024-02-23 19:49:41.551 -03:00 [ERR] {"Result":null,"IsSuccess":false,"Errors":[{"Type":"Project.AddNewProject.UserNotFound","Description":"User 999 not found","StatusCode":404}]}
-2024-02-23 19:49:41.567 -03:00 [INF] Response: {"result":null,"isSuccess":false,"errors":[{"type":"Project.AddNewProject.UserNotFound","description":"User 999 not found","statusCode":404}]}{"type":"https://tools.ietf.org/html/rfc9110#section-15.5.1","title":"Bad Request","status":400,"traceId":"00-720b8c0125d8a426b17daf007c6b8857-86e96191d8f7b909-00"}

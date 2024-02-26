@@ -1,0 +1,7 @@
+2024-02-26 16:42:57.607 -03:00 [INF] Request: DELETE /project/191/task/59
+2024-02-26 16:42:57.608 -03:00 [INF] Request: POST /project/191/task/59/comment
+2024-02-26 16:42:57.609 -03:00 [INF] Request: GET /project/32
+2024-02-26 16:42:57.613 -03:00 [INF] Request Body: {"Comment":"Sint et animi aut laboriosam dolorem."}
+2024-02-26 16:42:57.678 -03:00 [INF] Response: {"result":[{"id":192,"name":"Ut vero qui corrupti at.","createdByUserId":32,"createdByUser":{"id":32,"name":"Karelle Homenick","profileName":"teamMember"}},{"id":193,"name":"Voluptas nesciunt voluptatem dignissimos quis.","createdByUserId":32,"createdByUser":{"id":32,"name":"Karelle Homenick","profileName":"teamMember"}},{"id":195,"name":"Suscipit amet saepe veniam consequuntur.","createdByUserId":32,"createdByUser":{"id":32,"name":"Karelle Homenick","profileName":"teamMember"}}],"isSuccess":true,"errors":null}
+2024-02-26 16:42:57.745 -03:00 [INF] Response: {"result":{"comment":"Sint et animi aut laboriosam dolorem."},"isSuccess":true,"errors":null}
+2024-02-26 16:42:57.777 -03:00 [INF] Response: {"result":{"id":59,"title":"Exercitationem similique error soluta sit.","description":"Corporis iusto rerum ea officiis quidem illum fugit accusamus recusandae.","dueDate":null,"completedAt":null,"status":3,"priority":3,"deletedAt":"2024-02-26T19:42:57.6574695Z","assignedUserId":null,"projectId":191},"isSuccess":true,"errors":null}
