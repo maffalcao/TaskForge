@@ -1,0 +1,2 @@
+2024-02-24 18:59:27.264 -03:00 [INF] Request: DELETE /project/2
+2024-02-24 18:59:28.672 -03:00 [INF] Response: {"result":null,"isSuccess":false,"errors":[{"type":"Task.DeleteProject.HavePendingTasks","description":"Project 2 cant be deleted because have pending tasks","statusCode":409}]}

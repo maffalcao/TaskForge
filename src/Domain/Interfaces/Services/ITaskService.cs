@@ -8,5 +8,6 @@ public interface ITaskService
     Task<OperationResult> UpdateAsync(UpdateTaskDto updateTaskDto, int taskId, int userId);
     Task<OperationResult> DeleteAsync(int taskId, int userId);    
     Task<OperationResult> AddComment(AddTaskCommentDto commentDto, int taskId, int userId);
+    Task<OperationResult> GetTasksDoneByUsers(int userId, int daysToConsider = 30);
 
 }

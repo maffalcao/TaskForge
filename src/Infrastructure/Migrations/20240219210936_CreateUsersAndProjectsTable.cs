@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Domain.Entities;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -54,11 +55,11 @@ namespace Infrastructure.Migrations
                columns: new[] { "Name", "ProfileName" },
                values: new object[,]
                {
-                    { "Marco", "manager" },
-                    { "Joana", "agent" },
-                    { "Maria", "agent" },
-                    { "Sofia", "agent" },
-                    { "João", "manager" },
+                    { "Mahdi Peck", UserProfiles.Manager },
+                    { "Luisa Bryan", UserProfiles.Enginer },
+                    { "Brianna Campbell", UserProfiles.Enginer },
+                    { "Moses Atkins", UserProfiles.QAEnginer },
+                    { "Osian Farmer", UserProfiles.Customer },
 
                });
         }

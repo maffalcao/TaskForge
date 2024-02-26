@@ -1,9 +1,21 @@
 version: '3.4'
 
 services:
-  api:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_HTTP_PORTS=8080
-    ports:
-      - "8080"
+    taskForgedb:
+        container_name: taskForgedb
+        environment:
+            SA_PASSWORD: "SwN12345678"
+            ACCEPT_EULA: "Y"
+        restart: always
+        ports:
+            - "1433:1433"    
+
+    api:
+        environment:
+            - ASPNETCORE_ENVIRONMENT=Development
+            - ASPNETCORE_HTTP_PORTS=8080
+            - "DatabaseSettings:ConnectionString=Server=taskForgedb;Port=5432;Database=TaskForgeDb;User Id=admin;Password=SwN12345678;" 
+        depends_on:
+            - taskForgedb
+        ports:
+            - "8080"

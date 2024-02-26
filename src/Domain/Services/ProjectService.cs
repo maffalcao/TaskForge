@@ -25,9 +25,38 @@ public class ProjectService(
         return OperationResult.Success(project.Adapt<ProjectDto>());
 
     }
-    public async Task<bool> DeleteAsync(int id)
+    public async Task<OperationResult> DeleteAsync(int projectId, int userId)
     {
-        return await projectRepository.DeleteAsync(id);
+        var project = await GetProject(projectId, includeString: "Tasks");
+
+        if (project is null)
+        {
+            return OperationResult.Failure(OperationErrors.ProjectNotFound(projectId));
+        }
+
+        if ((await UserExist(userId)) is false)
+        {
+            return OperationResult.Failure(OperationErrors.UserNotFound(userId));
+        }
+
+        var pendintTaskStatus = new List<ProjectTaskStatus>() {
+                ProjectTaskStatus.InProgress,
+                ProjectTaskStatus.Pending
+            };          
+            
+
+        if(project.Tasks != null && project.Tasks.Any(t => pendintTaskStatus.Contains(t.Status))) {
+        
+            return OperationResult.Failure(OperationErrors.ProjectHavePendingTasks(projectId));
+        }
+
+        project.DeletedAt = DateTime.UtcNow;
+        await projectRepository.UpdateAsync(project);
+
+        return OperationResult.Success(); 
+        
+
+        
     }
 
     public async Task<OperationResult> GetAllByUserIdAsync(int userId)
@@ -96,7 +125,7 @@ public class ProjectService(
 
 
         var tasks = await taskRepository.GetAsync(
-            t => t.ProjectId == projectId, includeString: "AuditTrails");
+            t => t.ProjectId == projectId && t.DeletedAt == null, includeString: "AuditTrails");
 
         var tasksDto = GetTaskByProjectDtos(tasks);
 
@@ -127,9 +156,15 @@ public class ProjectService(
         return tasksDtos;
     }
 
+    private async Task<Project> GetProject(int projectId, string includeString)
+    {
+        var projects =
+            await projectRepository.GetAsync(
+                p => p.Id.Equals(projectId), includeString: includeString);
+
+        return projects.FirstOrDefault();
+    }
 
     private async Task<bool> UserExist(int userId) =>
-        await userRepository.Exist(userId);
-
-    
+        await userRepository.Exist(userId);   
 }

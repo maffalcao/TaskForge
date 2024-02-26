@@ -1,0 +1,2 @@
+2024-02-24 18:28:44.692 -03:00 [INF] Request: GET /project/1/task
+2024-02-24 18:28:47.890 -03:00 [INF] Response: {"result":[{"id":8,"title":"primeira task","description":"segunda task","dueDate":null,"status":5,"priority":1,"assignedUserId":2,"projectId":1,"comments":null},{"id":9,"title":"primeira task","description":"segunda task","dueDate":null,"status":5,"priority":1,"assignedUserId":2,"projectId":1,"comments":null}],"isSuccess":true,"errors":null}

@@ -22,7 +22,7 @@ public class ProjectRepository : BaseRepository<Project>, IProjectRepository
 
     public async Task<IEnumerable<Project>> GetAllByUserId(int userId)
     {
-        return await GetAsync(p => p.CreatedByUserId == userId, includeString: "CreatedByUser");
+        return await GetAsync(p => p.CreatedByUserId == userId && p.DeletedAt == null, includeString: "CreatedByUser");
     }
 
 }

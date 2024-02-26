@@ -1,0 +1,9 @@
+2024-02-26 11:14:02.236 -03:00 [INF] Request: GET /project/task-report
+2024-02-26 11:14:03.524 -03:00 [INF] Response: {"result":null,"isSuccess":false,"errors":[{"type":"Task.GetTasksDoneByUsers.UserNotAllowed","description":"User 2 don't have permission to access this resource","statusCode":405}]}
+2024-02-26 11:14:31.578 -03:00 [INF] Request: GET /project/task-report
+2024-02-26 11:14:31.758 -03:00 [INF] Response: {"result":[],"isSuccess":true,"errors":null}
+2024-02-26 11:14:58.304 -03:00 [INF] Request: POST /project
+2024-02-26 11:14:58.308 -03:00 [INF] Request Body: {
+  "name": "Primeiro projeto"
+}
+2024-02-26 11:14:58.860 -03:00 [INF] Response: {"result":{"id":1,"name":"Primeiro projeto","createdByUserId":1,"createdByUser":{"id":1,"name":"Mahdi Peck","profileName":"manager"}},"isSuccess":true,"errors":null}

@@ -49,6 +49,32 @@
   },
   {
     "ContainingType": "Api.Controllers.ProjectController",
+    "Method": "DeleteProject",
+    "RelativePath": "Project/{projectId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "projectId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.ErrorHandling.OperationResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Api.Controllers.ProjectController",
     "Method": "AddTask",
     "RelativePath": "Project/{projectId}/task",
     "HttpMethod": "POST",
@@ -224,6 +250,26 @@
     "ReturnTypes": [
       {
         "Type": "Domain.Dtos.ProjectDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Api.Controllers.ProjectController",
+    "Method": "GetTasksDoneByUsers",
+    "RelativePath": "Project/task-report",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.ErrorHandling.OperationResult",
         "MediaTypes": [
           "text/plain",
           "application/json",

@@ -1,0 +1,10 @@
+2024-02-26 11:17:28.688 -03:00 [INF] Request: PUT /project/1/task/1
+2024-02-26 11:17:28.704 -03:00 [INF] Request Body: {
+  "title": "1",
+  "description": "1",
+  "status": 3,
+  "priority": 1  
+}
+2024-02-26 11:17:28.797 -03:00 [INF] Response: {"result":{"id":1,"title":"1","description":"1","dueDate":null,"completedAt":"2024-02-26T14:17:28.7370016Z","status":3,"priority":1,"assignedUserId":null,"projectId":1},"isSuccess":true,"errors":null}
+2024-02-26 11:17:36.255 -03:00 [INF] Request: GET /project/task-report
+2024-02-26 11:17:50.458 -03:00 [ERR] Exception caught: Object reference not set to an instance of an object.

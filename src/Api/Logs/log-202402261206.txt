@@ -1,0 +1,11 @@
+2024-02-26 12:06:22.122 -03:00 [INF] Request: PUT /project/1/task/3
+2024-02-26 12:06:22.129 -03:00 [INF] Request Body: {
+  "title": "1",
+  "description": "1",
+  "status": 3,
+  "priority": 1,
+  "assignedUserId": 2
+}
+2024-02-26 12:06:22.164 -03:00 [INF] Response: {"result":{"id":3,"title":"1","description":"1","dueDate":null,"completedAt":"2024-02-26T15:06:22.1453714Z","status":3,"priority":1,"assignedUserId":2,"projectId":1},"isSuccess":true,"errors":null}
+2024-02-26 12:06:25.119 -03:00 [INF] Request: GET /project/task-report
+2024-02-26 12:06:25.130 -03:00 [INF] Response: {"result":[{"userId":1,"userName":"Mahdi Peck","numberOfTasksCompleted":2},{"userId":2,"userName":"Luisa Bryan","numberOfTasksCompleted":1}],"isSuccess":true,"errors":null}

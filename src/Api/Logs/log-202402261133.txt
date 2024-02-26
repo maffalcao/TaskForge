@@ -1,0 +1,3 @@
+2024-02-26 11:33:28.048 -03:00 [INF] Request: GET /project/task-report
+2024-02-26 11:33:29.336 -03:00 [ERR] Exception caught: An error was generated for warning 'Microsoft.EntityFrameworkCore.Query.InvalidIncludePathError': Unable to find navigation 'Users' specified in string based include path 'Users'. This exception can be suppressed or logged by passing event ID 'CoreEventId.InvalidIncludePathError' to the 'ConfigureWarnings' method in 'DbContext.OnConfiguring' or 'AddDbContext'.
+2024-02-26 11:33:34.955 -03:00 [INF] Request: GET /project/task-report

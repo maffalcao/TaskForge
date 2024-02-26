@@ -7,6 +7,7 @@ public class TaskDto : IDto
     public string Title { get; set; }
     public string Description { get; set; }
     public DateTime? DueDate { get; set; }
+    public DateTime? CompletedAt { get; set; }
     public ProjectTaskStatus Status { get; set; }
     public ProjectTaskPriority Priority { get; set; }    
     public int? AssignedUserId { get; set; }

@@ -84,6 +84,22 @@ namespace Api.Controllers
             return HandleResult(result);
         }
 
+        [HttpDelete("{projectId:int}", Name = "DeleteProject")]
+        public async Task<ActionResult<OperationResult>> DeleteProject(int projectId)
+        {
+            var result = await _projectService.DeleteAsync(projectId, GetAuthenticatedUserId());
+
+            return HandleResult(result);
+        }
+
+        [HttpGet("task-report", Name = "GetTasksDoneByUsers")]
+        public async Task<ActionResult<OperationResult>> GetTasksDoneByUsers()
+        {
+            var result = await _taskService.GetTasksDoneByUsers(GetAuthenticatedUserId());
+
+            return HandleResult(result);
+        }
+
 
     }
 

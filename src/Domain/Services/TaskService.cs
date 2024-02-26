@@ -100,9 +100,11 @@ public class TaskService(
         task.AssignedUserId = updateTaskDto.AssignedUserId;
         task.Title = updateTaskDto.Title;
         task.Description = updateTaskDto.Description;        
-        task.Status = updateTaskDto.Status;
+        task.SetStatus(updateTaskDto.Status);
         task.DueDate = updateTaskDto.DueDate;
         task.ModifiedByUserId = userId;
+
+        task.CompletedAt = task.Status == ProjectTaskStatus.Done ? DateTime.UtcNow : null;
 
         var updatedTask = await taskRepository.UpdateAsync(task);
 
@@ -113,6 +115,7 @@ public class TaskService(
     public async Task<OperationResult> AddComment(AddTaskCommentDto commentDto, int taskId, int userId)
     {
         var task = await taskRepository.GetByIdAsync(taskId);
+
         if (!IsValidTask(task))
         {
             return OperationResult.Failure(OperationErrors.TaskNotFound(taskId));
@@ -129,6 +132,35 @@ public class TaskService(
         await taskRepository.UpdateAsync(task);
 
         return OperationResult.Success(commentDto);
+
+    }
+
+    public async Task<OperationResult> GetTasksDoneByUsers(int userId, int daysToConsider = 30)
+    {
+        var user = await userRepository.GetByIdAsync((int)userId);
+
+        if(user == null) {
+            return OperationResult.Failure(OperationErrors.UserNotFound(userId));
+        }
+
+        if(user.ProfileName != UserProfiles.Manager)
+        {
+            return OperationResult.Failure(OperationErrors.UserNotAllowed(userId));
+        }
+
+        var tasks = await taskRepository.GetAsync(t =>
+            t.AssignedUserId != null &&
+            t.Status == ProjectTaskStatus.Done &&
+            t.DeletedAt == null &&
+            t.CompletedAt >= DateTime.Now.AddDays(-daysToConsider)
+
+            , includeString: "AssignedUser");
+
+        var tasksByUsers = tasks
+            .GroupBy(t => new { t.AssignedUser.Id, t.AssignedUser.Name })
+            .Select(t => new GetTasksDoneByUsersDto(t.Key.Id, t.Key.Name, t.Count()));
+
+        return OperationResult.Success(tasksByUsers);
 
     }
 

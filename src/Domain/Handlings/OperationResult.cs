@@ -85,4 +85,14 @@ public static class OperationErrors
         $"Changing Task {taskId}' priority is not allowed",
         StatusCodes.Status409Conflict);
 
+    public static Error ProjectHavePendingTasks(int projectId) => new Error(
+        "Task.DeleteProject.HavePendingTasks",
+        $"Project {projectId} cant be deleted because have pending tasks",
+        StatusCodes.Status409Conflict);
+
+    public static Error UserNotAllowed(int userId) => new Error(
+        "Task.GetTasksDoneByUsers.UserNotAllowed",
+        $"User {userId} don't have permission to access this resource",
+        StatusCodes.Status405MethodNotAllowed);
+
 }
