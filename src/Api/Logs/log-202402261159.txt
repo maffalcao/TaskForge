@@ -1,0 +1,2 @@
+2024-02-26 11:59:55.308 -03:00 [INF] Request: GET /project/task-report
+2024-02-26 11:59:56.387 -03:00 [INF] Response: {"result":[],"isSuccess":true,"errors":null}

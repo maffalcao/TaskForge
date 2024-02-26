@@ -1,0 +1,2 @@
+2024-02-26 11:19:04.433 -03:00 [INF] Request: GET /project/task-report
+2024-02-26 11:19:42.523 -03:00 [INF] Request: GET /project/task-report

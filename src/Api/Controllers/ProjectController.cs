@@ -92,6 +92,14 @@ namespace Api.Controllers
             return HandleResult(result);
         }
 
+        [HttpGet("task-report", Name = "GetTasksDoneByUsers")]
+        public async Task<ActionResult<OperationResult>> GetTasksDoneByUsers()
+        {
+            var result = await _taskService.GetTasksDoneByUsers(GetAuthenticatedUserId());
+
+            return HandleResult(result);
+        }
+
 
     }
 

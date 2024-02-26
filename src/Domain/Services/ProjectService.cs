@@ -125,7 +125,7 @@ public class ProjectService(
 
 
         var tasks = await taskRepository.GetAsync(
-            t => t.ProjectId == projectId, includeString: "AuditTrails");
+            t => t.ProjectId == projectId && t.DeletedAt == null, includeString: "AuditTrails");
 
         var tasksDto = GetTaskByProjectDtos(tasks);
 

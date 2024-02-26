@@ -1,6 +1,9 @@
 version: '3.4'
 
 services:
+  taskForgedb: 
+    image: mcr.microsoft.com/mssql/server:2022-latest
+
   api:
     image: ${DOCKER_REGISTRY-}api
     build:

@@ -90,4 +90,9 @@ public static class OperationErrors
         $"Project {projectId} cant be deleted because have pending tasks",
         StatusCodes.Status409Conflict);
 
+    public static Error UserNotAllowed(int userId) => new Error(
+        "Task.GetTasksDoneByUsers.UserNotAllowed",
+        $"User {userId} don't have permission to access this resource",
+        StatusCodes.Status405MethodNotAllowed);
+
 }

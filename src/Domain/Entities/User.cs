@@ -14,3 +14,13 @@ public class User : BaseEntity
         ProfileName = profileName;
     }
 }
+
+public static class UserProfiles
+{   
+    public static string Manager => "manager";
+    public static string TeamMember => "teamMember";
+    public static string Enginer => "enginer";
+    public static string QAEnginer => "qaEnginer";
+    public static string ScrumMaster => "scrumMaster";
+    public static string Customer => "customer";
+}

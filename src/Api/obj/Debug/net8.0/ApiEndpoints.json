@@ -258,5 +258,25 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "Api.Controllers.ProjectController",
+    "Method": "GetTasksDoneByUsers",
+    "RelativePath": "Project/task-report",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "Domain.ErrorHandling.OperationResult",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]

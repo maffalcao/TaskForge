@@ -1,3 +1,0 @@
-2024-02-24 17:23:16.801 -03:00 [INF] Request: GET /project/2/task
-2024-02-24 17:23:30.306 -03:00 [ERR] Exception caught: Unable to cast object of type 'AsyncStateMachineBox`1[System.Collections.Generic.IReadOnlyList`1[Domain.Entities.ProjectTask],Infrastructure.Repositories.BaseRepository`1+<GetAsync>d__8[Domain.Entities.ProjectTask]]' to type 'System.Collections.Generic.IEnumerable`1[Domain.Entities.ProjectTask]'.
-2024-02-24 17:23:38.699 -03:00 [INF] Request: GET /project/2/task

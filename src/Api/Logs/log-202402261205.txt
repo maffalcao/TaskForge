@@ -1,0 +1,4 @@
+2024-02-26 12:05:31.272 -03:00 [INF] Request: GET /project/task-report
+2024-02-26 12:05:31.297 -03:00 [INF] Response: {"result":[{"userId":1,"userName":"Mahdi Peck","numberOfTasksCompleted":2}],"isSuccess":true,"errors":null}
+2024-02-26 12:05:58.767 -03:00 [INF] Request: GET /project/task-report
+2024-02-26 12:05:58.788 -03:00 [INF] Response: {"result":[{"userId":1,"userName":"Mahdi Peck","numberOfTasksCompleted":2}],"isSuccess":true,"errors":null}
