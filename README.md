@@ -31,7 +31,7 @@ Links úteis:
 
 ---
 
-## Fase 2 - sugestões ao _PO_ visando o refinamento para futuras implementações ou melhorias
+## Fase 2 - sugestões de refinamento para futuras melhorias
 
 | **Tema** | **Observações** |
 | --- | --- |
@@ -54,23 +54,12 @@ Links úteis:
 
 ## Fase 3 - possíveis melhoraria no projeto
 
-1\. **Utilizar Redis para consultas frequentes**  
-    Implementar o Redis para fazer cache de dados frequentemente acessados, o que poder levar a uma significanda diminuição da latençia para certos endpoints
-
-2\. **Implementar um pipeline de CI/CD**  
-    Criar um um pipeline de integração e entrega contínua (CI/CD) para garantir a qualidade do código enviado ao repositório. Questões como integridade de execução, realização automatica de testes de integração e unitários, conformidade com os padrões de codificação estabelecidos e implantação automática, entre outros, podem estar representados nesse pipeline
-
-3. **Utilizar Kubernetes para gestão de deploy e orquestração**  
-    Implementar um cluster Kubernetes (AKS?) para automatizar a implantação em produção, gerenciar a orquestração da aplicação e garantir A escalabilidade.
-
-4\. **Adotar a arquitetura CQRS**  
-    Considerar a adoção da arquitetura Command Query Responsibility Segregation (CQRS) para separar as operações de leitura e escrita, permitindo escalar de forma independente esses duas operações.
-
-5\. **Implementar monitoramento e logging**  
-    Introduzir ferramentas de monitoramento e logging para acompanhar o desempenho da aplicação, identificar possíveis problemas e garantir uma operação contínua e eficiente.
-
-6\. **Aplicar princípios de segurança**  
-    Reforçar a segurança da aplicação implementando práticas recomendadas, como autenticação e autorização, criptografia e proteção contra ataques comuns, como injeção de SQL e cross-site scripting (XSS).
-
-7\. **Realizar análise de desempenho**  
-    Realizar análises periódicas de desempenho para identificar gargalos e áreas de melhoria, otimizando consultas de banco de dados, algoritmos e processos para garantir uma experiência do usuário mais rápida e eficiente.
+| **Proposta**                                      | **Observações**                                                                                                                                                                                                                                                                                                                           |
+|------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Utilizar Redis para consultas frequentes       | Implementar o Redis para fazer cache de dados frequentemente acessados, o que pode levar a uma significativa diminuição da latência para certos endpoints.                                                                                                                                                                              |
+| Implementar um pipeline de CI/CD               | Criar um pipeline de integração e entrega contínua (CI/CD) para garantir a qualidade do código enviado ao repositório. Questões como integridade de execução, realização automática de testes de integração e unitários, conformidade com os padrões de codificação estabelecidos e implantação automática, entre outros, podem estar representados nesse pipeline. |
+| Utilizar Kubernetes para gestão de deploy e orquestração | Implementar um cluster Kubernetes (AKS?) para automatizar a implantação em produção, gerenciar a orquestração da aplicação e garantir escalabilidade.                                                                                                                                                                                |
+| Adotar a arquitetura CQRS                      | Considerar a adoção da arquitetura Command Query Responsibility Segregation (CQRS) para separar as operações de leitura e escrita, permitindo escalar de forma independente essas duas operações.                                                                                                                                   |
+| Implementar monitoramento e logging            | Introduzir ferramentas de monitoramento e logging para acompanhar o desempenho da aplicação, identificar possíveis problemas e garantir uma operação contínua e eficiente.                                                                                                                                                           |
+| Aplicar princípios de segurança                | Reforçar a segurança da aplicação implementando práticas recomendadas, como autenticação e autorização, criptografia e proteção contra ataques comuns, como injeção de SQL e cross-site scripting (XSS).                                                                                                                         |
+| Realizar análise de desempenho                 | Realizar análises periódicas de desempenho para identificar gargalos e áreas de melhoria, otimizando consultas de banco de dados, algoritmos e processos para garantir uma experiência do usuário mais rápida e eficiente.                                                                                                          |
