@@ -1,6 +1,6 @@
 # TaskForge
 
-![](assets/folder.png)
+![](assets/kambam.gif)
 
 ## Instruções para execução
 
