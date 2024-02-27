@@ -1,4 +1,4 @@
-## TaskForge
+# TaskForge
 
 ![](assets/folder.png)
 
@@ -11,10 +11,16 @@
 
 **Rodando a aplicação:**
 
-1.  Acesse a past pasta Src do projeto
-2.  Execute o comando `docker-compose up` para criação dos containers da aplicação e do postgress
-3.  Execute o comando `dotnet ef database update --startup-project Api --project Infrastructure` para criação da base de dados, tabelas e seed de dados na tabela Users (exemplos para os testes aqui)
-4.  Para rodar a aplicação, rode os comandos `dot net run` ou d`ocker-compose up --build` 
+1.  Acesse a past pasta _Src_ do projeto
+2.  Execute o comando `docker-compose up` para criação e execução dos containers da aplicação e do postgres
+3.  Execute o comando `dotnet ef database update --startup-project Api --project Infrastructure` para criação da base de dados, tabelas e seed de dados na tabela Users
+4.  A aplicação estará rodando no endereço [http://localhost:8080](http://localhost:8080) 
+
+Links úteis:
+
+*   [Collection postman com todos os endpoints disponíveis](assets/TaskForge.postman_collection.json)
+*   [Lista de todos os ususário que são carregados via seed, para user nos requests](assets/Users.png)
+
 
 **Testando a aplicação:**
 
@@ -24,10 +30,7 @@
     obs: para execução dos testes de integração, a conteiner do postgres precisa estar em execução
     
 
-Links úteis:
 
-*   [Collection postman com todos os endpoints disponíveis](assets/TaskForge.postman_collection.json)
-*   [Lista de todos os ususário que são carregados via seed, para user nos testes](assets/Users.png)
 
 ---
 
